@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.index');
     }
+
+    public function destroy()
+    {
+        auth()->logout();
+        
+        return redirect()->back();
+    }
+
 }
