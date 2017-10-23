@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostsController@index');
 
 Route::get('/post', function() {
 	return view('post');
@@ -27,6 +25,6 @@ Route::post('post/create', 'AdminPostsController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/logout', 'HomeController@destroy');
