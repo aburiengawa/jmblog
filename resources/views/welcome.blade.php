@@ -78,7 +78,13 @@
           <hr> --}}
           <!-- Pager -->
           <div class="clearfix">
-            <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
+            {{-- {{ $posts->links() }} --}}
+            @if($posts->previousPageUrl())
+            <a class="btn btn-secondary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Newer Posts</a>
+            @endif
+            @if($posts->nextPageUrl())
+            <a class="btn btn-secondary float-right" href="{{ $posts->nextPageUrl() }}">Older Posts &rarr;</a>
+            @endif
           </div>
         </div>
       </div>
