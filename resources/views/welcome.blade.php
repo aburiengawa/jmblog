@@ -26,12 +26,13 @@
                 {{ $post->title}}
               </h2>
               <h3 class="post-subtitle">
-                {{ $post->body }}
+                {{ substr($post->body, 0, 10) }} ...
+                {{-- {{ $post->body }} --}}
               </h3>
             </a>
             <p class="post-meta">Posted by
               <a href="#">{{ $post->user->name }}</a>
-              on September 24, 2017</p>
+              on {{ $post->created_at->toFormattedDateString() }}</p>
           </div>
           
           <hr>

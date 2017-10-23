@@ -21,10 +21,12 @@ Route::get('/post/create', function() {
 	return view('admin.posts.create');
 });
 
+Route::get('/post/{post}', 'PostsController@show');
+
 Route::post('post/create', 'AdminPostsController@store');
 
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
-Route::get('/logout', 'HomeController@destroy');
+Route::get('/logout', 'AdminController@destroy');

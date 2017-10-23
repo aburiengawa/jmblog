@@ -12,4 +12,9 @@ class PostsController extends Controller
     	$posts = Post::orderBy('created_at', 'desc')->simplePaginate(5);
     	return view('welcome', compact('posts'));
     }
+
+    public function show(Post $post)
+    {
+    	return view('post', compact('post'));
+    }
 }
