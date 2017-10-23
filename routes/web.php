@@ -19,6 +19,12 @@ Route::get('/post', function() {
 	return view('post');
 });
 
+Route::get('/post/create', function() {
+	return view('admin.posts.create');
+});
+
+Route::post('post/create', 'AdminPostsController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

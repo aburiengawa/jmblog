@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@include('includes.tinyeditor')
+{{-- @include('includes.tinyeditor') --}}
 <h1>Create Post</h1>
 <div class="row">
 {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
@@ -10,10 +10,10 @@
 		{!! Form::text('title', null, ['class'=>'form-control']) !!}
 	</div>	
 
-	<div class="form-group">
+{{-- 	<div class="form-group">
 		{!! Form::label('category_id', 'Category:') !!}
 		{!! Form::select('category_id', [''=>'Choose a category'] + $categories, null, ['class'=>'form-control']) !!}
-	</div>
+	</div> --}}
 
 	<div class="form-group">
 		{!! Form::label('photo_id', 'Photo:') !!}
@@ -32,6 +32,6 @@
 {!! Form::close() !!}
 </div>
 <div class="row">
-	@include('includes.form-error')
+	{{-- @include('includes.form-error') --}}
 </div>
 @stop
