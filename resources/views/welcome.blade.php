@@ -21,7 +21,7 @@
           
           @foreach($posts as $post)
           <div class="post-preview">
-            <a href="post">
+            <a href="post/{{ $post->id }}">
               <h2 class="post-title">
                 {{ $post->title}}
               </h2>

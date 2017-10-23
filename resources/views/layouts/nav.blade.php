@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
@@ -21,7 +21,7 @@
                 {{-- <div class="top-right links"> --}}
                     @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
                     </li>                        
                     @else
                     <li class="nav-item">
