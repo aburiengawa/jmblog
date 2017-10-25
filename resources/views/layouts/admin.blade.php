@@ -44,10 +44,7 @@
         </div>
         <!-- /.navbar-header -->
 
-
-
         <ul class="nav navbar-top-links navbar-right">
-
 
             <!-- /.dropdown -->
             <li class="dropdown">
@@ -66,7 +63,6 @@
                 <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
-
 
         </ul>
 
@@ -147,7 +143,6 @@
                         <!-- /.nav-second-level -->
                     </li>
 
-
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -178,12 +173,6 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
-
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -271,16 +260,11 @@
                     </li>
                 </ul>
 
-
             </div>
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-
-
-
-
 
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -288,9 +272,6 @@
                 <li>
                     <a href="/profile"><i class="fa fa-dashboard fa-fw"></i>Profile</a>
                 </li>
-
-
-
 
                 <li>
                     <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
@@ -307,10 +288,6 @@
                     <!-- /.nav-second-level -->
                 </li>
 
-
-
-
-
             </ul>
 
         </div>
@@ -318,11 +295,6 @@
     </div>
 
 </div>
-
-
-
-
-
 
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -344,18 +316,10 @@
 </div>
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="{{asset('js/libs.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
 @yield('scripts')
 
-@yield('footer')
-
-
-
-
+@include('layouts.footer')
+<script src="{{asset('js/libs.js')}}"></script>
 
 </body>
 
