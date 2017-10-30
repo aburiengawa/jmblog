@@ -16,17 +16,23 @@ class AdminPostsController extends Controller
         	'body' 	=> 'required'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $name = time() . $file->getClientOriginalName();
-            $file->move('img', $name);
-            $photo = Photo::create(['file'=>$name]);
-        }
-
         auth()->user()->publish(
         	new Post(request(['title', 'body']))
         );
         session()->flash('message', 'Your post has now been published');
         return redirect('/admin');
     }
+
+    public function test(Request $request)
+    {
+        dd($request);
+        // $body = $request['body'];
+        // return view('output', compact('body'));
+    }
+
+    public function summernote(Request $request)
+    {
+        dd($request);
+    }
+
 }
