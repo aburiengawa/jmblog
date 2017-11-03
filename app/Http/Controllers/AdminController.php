@@ -30,7 +30,7 @@ class AdminController extends Controller
     {
         auth()->logout();
         
-        return redirect()->back();
+        return redirect('/admin');
     }
 
 }

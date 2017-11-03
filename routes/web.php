@@ -12,24 +12,16 @@
 */
 
 Route::get('/', 'PostsController@index');
-
-Route::get('/post', function() {
-	return view('post');
-});
-
-Route::get('/post/create', function() {
+Route::get('/posts/create', function() {
 	return view('admin.posts.create');
 });
+Route::post('posts/create', 'AdminPostsController@store');
 
-// Route::get('/post/createsummer', function() {
-// 	return view('admin.posts.createsummer');
-// });
-
+Route::get('/posts/index', 'AdminPostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
 
-Route::post('post/create', 'AdminPostsController@store');
-// Route::post('post/create', 'AdminPostsController@test');
-// Route::post('post/createsummer', 'AdminPostsController@summernote');
+
+
 
 Auth::routes();
 

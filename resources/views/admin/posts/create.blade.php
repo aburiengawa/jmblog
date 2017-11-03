@@ -1,4 +1,4 @@
-<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @extends('layouts.admin')
 @section('content')
 
@@ -19,10 +19,10 @@
 		{!! Form::select('category_id', [''=>'Choose a category'] + $categories, null, ['class'=>'form-control']) !!}
 	</div> --}}
 
-{{-- 	<div class="form-group">
-		{!! Form::label('photo', 'Photo:') !!}
+	<div class="form-group">
+		{!! Form::label('photo', 'Post Image:') !!}
 		{!! Form::file('photo', null, ['class'=>'form-control']) !!}
-	</div>	 --}}
+	</div>	
 
 	<div class="form-group">
 		{!! Form::label('body', 'Content:') !!}

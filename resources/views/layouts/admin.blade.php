@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Admin</title>
 
@@ -136,7 +137,7 @@
                             </li>
 
                             <li>
-                                <a href="/post/create">Create Post</a>
+                                <a href="/posts/create">Create Post</a>
                             </li>
 
                         </ul>
@@ -167,7 +168,7 @@
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="/media/upload">Upload Media</a>
                             </li>
 
                         </ul>

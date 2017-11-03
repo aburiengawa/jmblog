@@ -26,7 +26,7 @@
                 {{ $post->title}}
               </h2>
               <h3 class="post-subtitle">
-                {{ substr($post->body, 0, 10) }} ...
+                {!! substr($post->body, 0, 10) !!} ...
                 {{-- {{ $post->body }} --}}
               </h3>
             </a>
