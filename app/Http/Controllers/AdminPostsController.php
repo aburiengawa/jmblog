@@ -11,24 +11,31 @@ class AdminPostsController extends Controller
 
     public function store(Request $request)
     {
-        // $this->validate(request(), [
-        // 	'title' => 'required',
-        // 	'body' 	=> 'required'
-        // ]);
+        $this->validate(request(), [
+        	'title' => 'required',
+        	'body' 	=> 'required'
+        ]);
+
+        $input = $request->all(); 
 
         if($file = $request->file('photo')) {
             $name = $file->getClientOriginalName();
             $file->move('photos/shares', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
+        } else {
+            $input['photo_id'] = 0;
         }
 
         // auth()->user()->publish(
-        // 	new Post(request(['title', 'body']))
-        // );
-        // session()->flash('message', 'Your post has now been published');
-        // return redirect('/admin');
-        dd($request);
+        //     new Post(request(['title', 'body', 'photo_id']))
+        // );        
+        // dd($input);
+        auth()->user()->posts()->create($input);
+
+        session()->flash('message', 'Your post has now been published');
+        return redirect('/admin');
+        // dd($request);
     }
 
     public function index() {
