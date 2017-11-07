@@ -47,5 +47,14 @@ class AdminPostsController extends Controller
     // {
     //     dd($request);
     // }
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', compact('post'));
+    }    
+
+    public function update(Request $request)
+    {
+        dd($request);
+    }
 
 }

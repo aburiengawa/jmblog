@@ -7,7 +7,7 @@
 <div class="row">
 
 	<div class="col-sm-3">
-		<img src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive">
+		<img src="{{$post->photo ? '/photos/shares/' . $post->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive">
 	</div>
 
 	<div class="col-sm-9">
@@ -16,12 +16,12 @@
 		<div class="form-group">
 			{!! Form::label('title', 'Title:') !!}
 			{!! Form::text('title', null, ['class'=>'form-control']) !!}
-		</div>	
+		</div>
 
-		<div class="form-group">
+{{-- 		<div class="form-group">
 			{!! Form::label('category_id', 'Category:') !!}
 			{!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
-		</div>
+		</div> --}}
 
 		<div class="form-group">
 			{!! Form::label('photo_id', 'Photo:') !!}
@@ -39,7 +39,7 @@
 
 	{!! Form::close() !!}
 
-	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
+{{-- 	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
 	
 		<div class="form-group">
 			{!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
@@ -47,12 +47,12 @@
 	
 
 
-	{!! Form::close() !!}
+	{!! Form::close() !!} --}}
 	</div>
 </div>
 
-<div class="row">
+{{-- <div class="row">
 	@include('includes.form-error')
-</div>
+</div> --}}
 
 @stop
