@@ -17,7 +17,7 @@ class Post extends Model
     
     public function photo()
     {
-        return $this->belongsToMany(Photo::class);
+        return $this->belongsTo(Photo::class);
     }
 
 }
