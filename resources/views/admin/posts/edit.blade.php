@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-@include('includes.tinyeditor')
 
 <h1>Edit Post</h1>
 
@@ -11,7 +10,8 @@
 	</div>
 
 	<div class="col-sm-9">
-	{!! Form::model($post, ['method'=>'PATCH', 'action'=>['AdminPostsController@update', $post->id], 'files'=>true]) !!}
+
+	{!! Form::model($post, ['route' => ['update', $post->id], 'method' => 'PATCH']) !!}
 
 		<div class="form-group">
 			{!! Form::label('title', 'Title:') !!}
@@ -54,5 +54,5 @@
 {{-- <div class="row">
 	@include('includes.form-error')
 </div> --}}
-
+@include('includes.tinyeditor')
 @stop

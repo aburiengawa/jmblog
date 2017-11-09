@@ -9,10 +9,15 @@ use Illuminate\Http\Request;
 class AdminPostsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request)
     {
         $this->validate(request(), [
-        	'title' => 'required',
+        	'title' => 'required|max:100',
         	'body' 	=> 'required'
         ]);
 
@@ -23,8 +28,6 @@ class AdminPostsController extends Controller
             $file->move('photos/shares', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
-        } else {
-            $input['photo_id'] = 0;
         }
 
         // auth()->user()->publish(
@@ -52,9 +55,26 @@ class AdminPostsController extends Controller
         return view('admin.posts.edit', compact('post'));
     }    
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        dd($request);
+        $this->validate(request(), [
+            'title' => 'required|max:100',
+            'body'  => 'required'
+        ]);
+
+        $input = $request->all(); 
+
+        if($file = $request->file('photo')) {
+            $name = $file->getClientOriginalName();
+            $file->move('photos/shares', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        auth()->user()->posts()->whereId($id)->first()->update($input);
+
+        session()->flash('message', 'Your post has now been updated');
+        return redirect('/admin');
     }
 
 }
