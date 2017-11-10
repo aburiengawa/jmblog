@@ -11,7 +11,7 @@
 
 	<div class="col-sm-9">
 
-	{!! Form::model($post, ['route' => ['update', $post->id], 'method' => 'PATCH']) !!}
+	{!! Form::model($post, ['route' => ['update', $post->id], 'method' => 'PATCH', 'files'=>true]) !!}
 
 		<div class="form-group">
 			{!! Form::label('title', 'Title:') !!}
@@ -24,8 +24,8 @@
 		</div> --}}
 
 		<div class="form-group">
-			{!! Form::label('photo_id', 'Photo:') !!}
-			{!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
+			{!! Form::label('photo', 'Post Image:') !!}
+			{!! Form::file('photo', null, ['class'=>'form-control']) !!}
 		</div>	
 
 		<div class="form-group">

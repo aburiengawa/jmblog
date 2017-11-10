@@ -30,10 +30,6 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
-        // auth()->user()->publish(
-        //     new Post(request(['title', 'body', 'photo_id']))
-        // );        
-        // dd($input);
         auth()->user()->posts()->create($input);
 
         session()->flash('message', 'Your post has now been published');
