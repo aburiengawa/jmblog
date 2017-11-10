@@ -73,4 +73,16 @@ class AdminPostsController extends Controller
         return redirect('/admin');
     }
 
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        if($post->photo) {
+            // dd(public_path());
+            unlink(public_path() . "/photos/shares/" . $post->photo->file);
+            Photo::findOrFail($post->photo_id)->delete();
+        }
+        auth()->user()->posts()->whereId($id)->first()->delete();
+        return redirect('/admin');
+    }   
+
 }

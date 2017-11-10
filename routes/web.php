@@ -19,6 +19,7 @@ Route::get('/posts/create', function() {
 
 Route::get('posts/edit/{post}', 'AdminPostsController@edit');
 Route::patch('posts/edit/{post}', 'AdminPostsController@update')->name('update');
+Route::delete('posts/edit/{post}', 'AdminPostsController@destroy');
 
 Route::post('posts/create', 'AdminPostsController@store');
 
