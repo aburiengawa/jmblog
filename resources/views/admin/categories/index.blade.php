@@ -36,7 +36,7 @@
 		@foreach($categories as $category)
 		<tr>
 			<td>{{$category->id}}</td>
-			<td><a href="">{{$category->name}}</a></td>
+			<td><a href="/posts/category/{{ $category->id }}">{{$category->name}}</a></td>
 			<td><a href="/admin/categories/{{$category->id}}">EDIT</a></td>
 			{{-- {!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy']]) !!} --}}
 			{{-- <input type="hidden" name="id" value="{{$category->id}}"> --}}

@@ -12,7 +12,7 @@
               <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
               <span class="meta">Posted by
                 <a href="#"> {{ $post->user->name }} </a>
-                on {{ $post->created_at->toFormattedDateString() }}</span>
+                on {{ $post->created_at->toFormattedDateString() }} under <a href="">{{ $post->category->name }}</a></span>
             </div>
           </div>
         </div>

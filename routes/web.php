@@ -23,6 +23,8 @@ Route::post('posts/create', 'AdminPostsController@store');
 Route::get('/posts/index', 'AdminPostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
 
+Route::get('/posts/category/{category}', 'PostsController@category');
+
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin');

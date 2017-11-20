@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -17,4 +18,11 @@ class PostsController extends Controller
     {
     	return view('post', compact('post'));
     }
+
+    public function category($id)
+    {
+    	$category = Category::findOrFail($id);
+    	return view('categories.index', compact('category'));
+    }
+
 }
