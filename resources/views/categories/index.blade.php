@@ -21,12 +21,12 @@
           
           @foreach($posts as $post)
           <div class="post-preview">
-            <a href="post/{{ $post->id }}">
+            <a href="{{url('/')}}/post/{{ $post->id }}">
               <h2 class="post-title">
                 {{ $post->title}}
               </h2>
               <h3 class="post-subtitle">
-                {!! substr($post->body, 0, 10) !!} ...
+                {!! substr($post->body, 0, 30) !!} ...
                 {{-- {{ $post->body }} --}}
               </h3>
             </a>
