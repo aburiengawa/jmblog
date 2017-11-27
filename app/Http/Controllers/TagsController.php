@@ -14,7 +14,8 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('admin.tags.index');
+        $tags = Tag::all();
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -35,7 +36,8 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        Tag::create($request->all());
+        return redirect("/admin/tags");
     }
 
     /**
@@ -55,9 +57,10 @@ class TagsController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -69,7 +72,7 @@ class TagsController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        return view('test');
     }
 
     /**
@@ -80,6 +83,6 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        return view('test');
     }
 }

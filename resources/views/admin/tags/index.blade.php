@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::submit('Create Category', ['class'=>'btn btn-primary']) !!}
+		{!! Form::submit('Create Tag', ['class'=>'btn btn-primary']) !!}
 	</div>
 
 {!! Form::close() !!}
@@ -30,16 +30,16 @@
 		</thead>
 		<tbody>
 
-{{-- 	@if($categories)
-		@foreach($categories as $category)
+	@if($tags)
+		@foreach($tags as $tag)
 		<tr>
-			<td>{{$category->id}}</td>
-			<td><a href="/posts/category/{{ $category->id }}">{{$category->name}}</a></td>
-			<td><a href="/admin/categories/{{$category->id}}">EDIT</a></td>
-			<td>{{$category->created_at ? $category->created_at->diffForHumans() : 'No date'}}</td>
+			<td>{{$tag->id}}</td>
+			<td><a href="/posts/tags/{{ $tag->id }}">{{$tag->name}}</a></td>
+			<td><a href="/admin/tags/{{$tag->id}}">EDIT</a></td>
+			<td>{{$tag->created_at ? $tag->created_at->diffForHumans() : 'No date'}}</td>
 		</tr>
 		@endforeach
-	@endif --}}
+	@endif
 
 		</tbody>
 	</table>

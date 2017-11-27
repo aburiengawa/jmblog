@@ -37,5 +37,8 @@ Route::delete('admin/categories', 'AdminCategoriesController@destroy');
 
 Route::get('admin/tags', 'TagsController@index');
 Route::post('admin/tags', 'TagsController@store');
+Route::get('admin/tags/{tag}', 'TagsController@edit');
+Route::patch('admin/tags/{tag', 'TagsController@update');
+Route::delete('admin/tags', 'TagsController@destroy');
 
 Route::get('/logout', 'AdminController@destroy');
