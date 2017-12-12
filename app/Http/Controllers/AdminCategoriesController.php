@@ -84,9 +84,10 @@ class AdminCategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        Category::findOrFail($request['id'])->delete();
+        // Category::findOrFail($request['id'])->delete();
+        Category::findOrFail($id)->delete();
         return redirect('/admin/categories');
     }
 }

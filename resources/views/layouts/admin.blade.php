@@ -332,11 +332,11 @@
 </div>
 <!-- /#wrapper -->
 
-@yield('scripts')
 
-@include('layouts.footer')
 
 <script src="{{asset('js/libs.js')}}"></script>
+
+@yield('scripts')
 
 </body>
 

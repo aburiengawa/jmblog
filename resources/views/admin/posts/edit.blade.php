@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@section('styles')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+@endsection
+
 @section('content')
 
 <h1>Edit Post</h1>
@@ -17,11 +22,11 @@
 			{!! Form::label('title', 'Title:') !!}
 			{!! Form::text('title', null, ['class'=>'form-control']) !!}
 		</div>
-
-{{-- 		<div class="form-group">
+		
+		<div class="form-group">
 			{!! Form::label('category_id', 'Category:') !!}
 			{!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
-		</div> --}}
+		</div>
 
 		<div class="form-group">
 			{!! Form::label('photo', 'Post Image:') !!}
@@ -32,6 +37,11 @@
 			{!! Form::label('body', 'Content:') !!}
 			{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 		</div>	
+		
+		<div class="form-group">
+				{!! Form::label('tags', 'Tags:') !!}
+				{!! Form::select('tags[]', $tagArr, null, ['class'=>'form-control js-example-basic-multiple', 'multiple' => 'multiple']) !!}
+		</div>
 
 		<div class="form-group">
 			{!! Form::submit('Update Post', ['class'=>'btn btn-primary col-sm-6']) !!}
@@ -53,4 +63,10 @@
 	@include('includes.form-error')
 </div> --}}
 @include('includes.tinyeditor')
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript" src="{{asset('js/select2.js')}}"></script>
+@endsection
+
 @stop

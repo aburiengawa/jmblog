@@ -29,16 +29,24 @@ Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
-Route::get('admin/categories', 'AdminCategoriesController@index');
-Route::get('admin/categories/{category}', 'AdminCategoriesController@edit');
-Route::patch('admin/categories/{category}', 'AdminCategoriesController@update');
-Route::post('admin/categories', 'AdminCategoriesController@store');
-Route::delete('admin/categories', 'AdminCategoriesController@destroy');
+Route::resource('admin/categories', 'AdminCategoriesController', ['names' => [
+	'index' => 'admin.categories.index',
+	'edit' => 'admin.categories.edit',
+	'update' => 'admin.categories.update',
+	'store' => 'admin.categories.store',
+	'destroy' => 'admin.categories.destroy'
+]]);
+
+// Route::get('admin/categories', 'AdminCategoriesController@index');
+// Route::get('admin/categories/{category}', 'AdminCategoriesController@edit');
+// Route::patch('admin/categories/{category}', 'AdminCategoriesController@update');
+// Route::post('admin/categories', 'AdminCategoriesController@store');
+// Route::delete('admin/categories', 'AdminCategoriesController@destroy');
 
 Route::get('admin/tags', 'TagsController@index');
 Route::post('admin/tags', 'TagsController@store');
 Route::get('admin/tags/{tag}', 'TagsController@edit');
-Route::patch('admin/tags/{tag', 'TagsController@update');
+Route::patch('admin/tags/{tag}', 'TagsController@update');
 Route::delete('admin/tags', 'TagsController@destroy');
 
 Route::get('/logout', 'AdminController@destroy');

@@ -18,9 +18,9 @@
 
 {!! Form::close() !!}
 
-{!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy']]) !!}
+{!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy', $category->id]]) !!}
 
-	<input type="hidden" name="id" value="{{$category->id}}">
+	{{-- <input type="hidden" name="id" value="{{$category->id}}"> --}}
 	<div class="form-group">
 		{!! Form::submit('Delete', ['class'=>'btn btn-danger col-sm-6']) !!}
 	</div>

@@ -81,8 +81,9 @@ class TagsController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Request $request)
     {
-        return view('test');
+        Tag::findOrFail($request['id'])->delete();
+        return redirect('/admin/tags');
     }
 }

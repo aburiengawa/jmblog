@@ -37,7 +37,7 @@
 		<tr>
 			<td>{{$category->id}}</td>
 			<td><a href="/posts/category/{{ $category->id }}">{{$category->name}}</a></td>
-			<td><a href="/admin/categories/{{$category->id}}">EDIT</a></td>
+			<td><a href="/admin/categories/{{$category->id}}/edit">EDIT</a></td>
 			{{-- {!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy']]) !!} --}}
 			{{-- <input type="hidden" name="id" value="{{$category->id}}"> --}}
 			{{-- <td>{!! Form::submit('DELETE', ['class'=>'btn btn-danger col-sm-6']) !!}</td> --}}

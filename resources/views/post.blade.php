@@ -12,7 +12,10 @@
               <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
               <span class="meta">Posted by
                 <a href="#"> {{ $post->user->name }} </a>
-                on {{ $post->created_at->toFormattedDateString() }} under <a href="">{{ $post->category->name }}</a></span>
+                on {{ $post->created_at->toFormattedDateString() }} 
+                  @if($post->category)
+                    under <a href="">{{$post->category->name}}</a></span>
+                  @endif
             </div>
           </div>
         </div>
@@ -24,7 +27,18 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            {!! $post->body !!}
+
+            @if($post->tags)
+              <?php dd($post->tags); ?>
+              {!! $post->body !!}
+              <p>Tags: 
+                @foreach($post->tags as $tag)
+                <span class="label label-default">
+                  {{$tag->name}}
+                </span>
+                @endforeach
+              </p>
+            @endif
 
             <h2 class="section-heading">The Final Frontier</h2>
 
