@@ -28,17 +28,17 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
 
-            @if($post->tags)
-              <?php dd($post->tags); ?>
-              {!! $post->body !!}
-              <p>Tags: 
+            @if($post->tags->isNotEmpty())
+                Tags: 
                 @foreach($post->tags as $tag)
-                <span class="label label-default">
-                  {{$tag->name}}
-                </span>
+                  <span class="label label-default">
+                    {{$tag->name}}
+                  </span>
                 @endforeach
               </p>
             @endif
+
+            {!! $post->body !!}
 
             <h2 class="section-heading">The Final Frontier</h2>
 
