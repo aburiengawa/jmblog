@@ -31,6 +31,7 @@ style_formats: [
             {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
         ]},
         {title: 'Caption', inline: 'span', classes: 'caption text-muted'},
+        // {title: 'Caption', format: 'caption', inline: 'span'},
         {title: 'Section Heading', block: 'h2', classes: 'section-heading'}
     ],
 
@@ -39,6 +40,7 @@ style_formats: [
       aligncenter: {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'center'},
       alignright: {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'right'},
       alignjustify: {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'full'},
+      // caption: {selector : 'span', classes: 'caption text-muted'},
       // h2: {block: 'h2', classes: 'section-heading'},
       blockquote: {block : 'blockquote', classes : 'blockquote'},
       bold: {inline : 'span', 'classes' : 'bold'},

@@ -35,7 +35,7 @@
                     {{$tag->name}}
                   </span>
                 @endforeach
-              </p>
+              {{-- </p> --}}
             @endif
 
             {!! $post->body !!}

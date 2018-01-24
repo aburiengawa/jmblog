@@ -49,4 +49,7 @@ Route::get('admin/tags/{tag}', 'TagsController@edit');
 Route::patch('admin/tags/{tag}', 'TagsController@update');
 Route::delete('admin/tags', 'TagsController@destroy');
 
+Route::get('/verify/token/{token}', 'Auth\VerificationController@verify')->name('auth.verify'); 
+Route::get('/verify/resend', 'Auth\VerificationController@resend')->name('auth.verify.resend');
+
 Route::get('/logout', 'AdminController@destroy');
