@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\User;
+
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -21,7 +23,7 @@ class UserRequestedVerificationEmail
      */
     public $user;
 
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
