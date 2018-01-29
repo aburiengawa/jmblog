@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\VerificationToken;
 use App\User;
 use Auth;
+
+use App\Http\Controllers\Controller;
 use App\Events\UserRequestedVerificationEmail;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,7 @@ class VerificationController extends Controller
 {
     public function verify(VerificationToken $token)
     {
-        $token->user()->update([
-            'verified' => true
-        ]);
+        $token->user()->update(['verified' => true]);
  
         $token->delete();
  

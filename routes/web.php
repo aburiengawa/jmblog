@@ -23,6 +23,11 @@ Route::post('posts/create', 'AdminPostsController@store');
 Route::get('/posts/index', 'AdminPostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
 
+Route::get('/users/index', 'AdminUsersController@index');
+Route::get('/users/edit/{user}', 'AdminUsersController@edit');
+Route::patch('/users/edit/{user}', 'AdminUsersController@update')->name('update_user');
+Route::delete('/users/edit/{user}', 'AdminUsersController@destroy');
+
 Route::get('/posts/category/{category}', 'PostsController@category');
 
 Auth::routes();
