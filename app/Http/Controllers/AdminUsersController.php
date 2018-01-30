@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class AdminUsersController extends Controller
@@ -20,7 +21,8 @@ class AdminUsersController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+    	$roles = Role::pluck('name', 'id')->all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     public function destroy($id)
@@ -41,6 +43,7 @@ class AdminUsersController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_id = $request->role_id;
 
         if($request->password) {
         	$user->password = bcrypt($request->password);

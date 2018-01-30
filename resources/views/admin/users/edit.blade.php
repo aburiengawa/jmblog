@@ -6,7 +6,7 @@
 
 @section('content')
 
-<h1>Edit Post</h1>
+<h1>Edit User</h1>
 
 <div class="row">
 
@@ -25,34 +25,35 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('password', 'Password:') !!}
+			{!! Form::label('password', 'Change password:') !!}
 			{!! Form::password('password',['class'=>'form-control']) !!}
-		</div>	
-
-		<div class="form-group">
-			Date created: {{ $user->created_at->diffForHumans() }}
-		</div>	
-
+		</div>
+		
+		{!! Form::label('role_id', 'Role:') !!}
 	    <div class="pretty p-switch p-fill form-group">
-	        <input type="radio" name="switch1" />
+	    	{!! Form::radio('role_id', 3) !!}
 	        <div class="state p-success">
 	            <label>Reader</label>
 	        </div>
 	    </div>
 
 	    <div class="pretty p-switch p-fill form-group">
-	        <input type="radio" name="switch1" />
-	        <div class="state p-success">
+	        {!! Form::radio('role_id', 2) !!}
+	        <div class="state p-primary">
 	            <label>Author</label>
 	        </div>
 	    </div>
 
 	    <div class="pretty p-switch p-fill form-group">
-	        <input type="radio" name="switch1" />
-	        <div class="state p-success">
+	        {!! Form::radio('role_id', 1) !!}
+	        <div class="state p-danger">
 	            <label>Admin</label>
 	        </div>
 	    </div>
+
+		<div class="form-group">
+			<label>Date created:</label> {{ $user->created_at->diffForHumans() }}
+		</div>	
 
 		<div class="form-group">
 			{!! Form::submit('Update User', ['class'=>'btn btn-primary col-sm-6']) !!}
@@ -67,8 +68,9 @@
 		</div>
 
 	{!! Form::close() !!}
-	</div>
-</div>
+
+	</div> {{--.col-sm-12--}}
+</div> {{--.row--}}
 
 {{-- <div class="row">
 	@include('includes.form-error')
