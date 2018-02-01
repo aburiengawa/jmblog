@@ -14,9 +14,9 @@
 
 	{!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
 
-		<div class="form-group">
+		<div class="form-group" required>
 			{!! Form::label('name', 'Name:') !!}
-			{!! Form::text('name', null, ['class'=>'form-control']) !!}
+			{!! Form::text('name', null, ['class'=>'form-control'], array('required')) !!}
 		</div>
 		
 		<div class="form-group">
@@ -31,7 +31,7 @@
 		
 		{!! Form::label('role_id', 'Role:') !!}
 	    <div class="pretty p-switch p-fill form-group">
-	    	{!! Form::radio('role_id', 3) !!}
+	    	{!! Form::radio('role_id', 3, array('checked="checked"')) !!}
 	        <div class="state p-success">
 	            <label>Reader</label>
 	        </div>
