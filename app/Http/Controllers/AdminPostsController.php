@@ -48,8 +48,8 @@ class AdminPostsController extends Controller
 
         // auth()->user()->posts()->create($input);
 
-        session()->flash('message', 'Your post has now been published');
-        return redirect('/admin');
+        // session()->flash('message', 'Your post has now been published');
+        return redirect('/admin')->withInfo('Your post has been published');
         // dd($request);
     }
 
@@ -122,8 +122,8 @@ class AdminPostsController extends Controller
 
         // auth()->user()->posts()->whereId($id)->first()->update($input);
 
-        session()->flash('message', 'Your post has now been updated');
-        return redirect('/admin');
+        // session()->flash('message', 'Your post has now been updated');
+        return redirect('/admin')->withInfo('Your post has been updated');
     }
 
     public function destroy($id)
@@ -135,7 +135,7 @@ class AdminPostsController extends Controller
             Photo::findOrFail($post->photo_id)->delete();
         }
         auth()->user()->posts()->whereId($id)->first()->delete();
-        return redirect('/admin');
+        return redirect('/admin')->withInfo('Your post has been deleted');
     }   
 
 }

@@ -38,7 +38,7 @@ class AdminCategoriesController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return redirect('/admin/categories');
+        return redirect('/admin/categories')->withInfo('The category has been saved');
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminCategoriesController extends Controller
     {
         // dd($request);
         Category::findOrFail($id)->update($request->all());
-        return redirect('/admin/categories');
+        return redirect('/admin/categories')->withInfo('The category has been updated');
     }
 
     /**
@@ -88,6 +88,6 @@ class AdminCategoriesController extends Controller
     {
         // Category::findOrFail($request['id'])->delete();
         Category::findOrFail($id)->delete();
-        return redirect('/admin/categories');
+        return redirect('/admin/categories')->withInfo('The category has been deleted');
     }
 }

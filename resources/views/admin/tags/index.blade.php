@@ -23,7 +23,6 @@
 <div class="col-sm-8">
 	<table class="table">
 		<thead>
-			<th>ID</th>
 			<th>Name</th>
 			<th>Action</th>
 			<th>Created</th>
@@ -33,7 +32,6 @@
 	@if($tags)
 		@foreach($tags as $tag)
 		<tr>
-			<td>{{$tag->id}}</td>
 			<td><a href="/posts/tags/{{ $tag->id }}">{{$tag->name}}</a></td>
 			<td><a href="/admin/tags/{{$tag->id}}">EDIT</a></td>
 			<td>{{$tag->created_at ? $tag->created_at->diffForHumans() : 'No date'}}</td>

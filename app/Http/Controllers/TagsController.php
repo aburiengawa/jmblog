@@ -37,7 +37,7 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         Tag::create($request->all());
-        return redirect("/admin/tags");
+        return redirect("/admin/tags")->withInfo('The tag has been saved');
     }
 
     /**
@@ -70,9 +70,10 @@ class TagsController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        return view('test');
+        Tag::findOrFail($id)->update($request->all());
+        return redirect('/admin/tags')->withInfo('The tag has been updated');
     }
 
     /**
@@ -84,6 +85,6 @@ class TagsController extends Controller
     public function destroy(Request $request)
     {
         Tag::findOrFail($request['id'])->delete();
-        return redirect('/admin/tags');
+        return redirect('/admin/tags')->withInfo('The tag has been deleted');
     }
 }

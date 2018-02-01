@@ -25,7 +25,6 @@
 <div class="col-sm-8">
 	<table class="table">
 		<thead>
-			<th>ID</th>
 			<th>Name</th>
 			<th>Action</th>
 			<th>Created</th>
@@ -35,7 +34,6 @@
 	@if($categories)
 		@foreach($categories as $category)
 		<tr>
-			<td>{{$category->id}}</td>
 			<td><a href="/posts/category/{{ $category->id }}">{{$category->name}}</a></td>
 			<td><a href="/admin/categories/{{$category->id}}/edit">EDIT</a></td>
 			{{-- {!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy']]) !!} --}}

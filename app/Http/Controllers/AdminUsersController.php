@@ -29,7 +29,7 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         auth()->user()->whereId($id)->first()->delete();
-        return redirect('/admin');
+        return redirect('/admin')->withInfo('User deleted');
     }
 
    	public function update(Request $request, $id)
@@ -51,8 +51,8 @@ class AdminUsersController extends Controller
 
         $user->update();
 
-        session()->flash('message', 'User has been updated');
-        return redirect('/admin');
+        // session()->flash('message', 'User has been updated');
+        return redirect('/admin')->withInfo('User has been updated');
     }      
 
 }
