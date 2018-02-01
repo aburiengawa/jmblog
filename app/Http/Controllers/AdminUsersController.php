@@ -13,6 +13,31 @@ class AdminUsersController extends Controller
 	    $this->middleware('auth');
 	}
 
+    public function store(Request $request)
+    {
+        // dd($request);
+        $this->validate(request(), [
+            'name' => 'required|max:50',
+            'email'  => 'required',
+            'password' => 'required',
+            'role_id' => 'required'
+        ]);
+
+        $input = $request->all(); 
+        $input['password'] = bcrypt($request->password);
+        $input['verified'] = 1;
+
+        User::create($input);
+
+        return redirect('/admin')->withInfo('The user has been created');
+
+    }
+
+    public function create()
+    {
+        return view('admin.users.create');    
+    }
+
 	public function index()
 	{
 		$users = User::orderBy('created_at', 'desc')->paginate(10);
