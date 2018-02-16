@@ -15,11 +15,12 @@
 		</tr>
 	</thead>
 	<tbody>
+	
 	@if($posts)
+
 		@foreach($posts as $post)
 	
 		<tr>
-
 			<td>{{$post->user->name}}</td>
 			<td><a href="/posts/edit/{{ $post->id }}">{{$post->title}}</a></td>
 			<td>{!!str_limit($post->body, 20)!!}</td>
@@ -30,7 +31,9 @@
 		</tr>
 
 		@endforeach
+		
 	@endif
+
 	</tbody>
 </table>
 <div class="row">

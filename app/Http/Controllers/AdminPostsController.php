@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
+use App\User;
 use App\Post;
 use App\Photo;
 use App\Category;
@@ -53,15 +54,19 @@ class AdminPostsController extends Controller
         // dd($request);
     }
 
-    public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        return view('admin.posts.index', compact('posts'));
+    public function index() 
+    {
+        if (auth()->user()->role_id === 1) {
+            $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+            return view('admin.posts.index', compact('posts'));
+        }
+        if(auth()->user()->role_id === 2) {
+            $user = auth()->user();
+            $userId = $user->id;
+            $posts = Post::where('user_id', '=', $userId)->paginate(10);
+            return view('admin.posts.index', compact('posts'));
+        }
     }
-
-    // public function summernote(Request $request)
-    // {
-    //     dd($request);
-    // }
 
     public function create()
     {
