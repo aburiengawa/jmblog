@@ -4,7 +4,6 @@
 <table class="table">
 	<thead>
 		<tr>
-
 			<th>User</th>
 			<th>Title</th>
 			<th>Body</th>

@@ -6,7 +6,7 @@
             Menu
             <i class="fa fa-bars"></i>
         </button>
-        <div class="navbar-collapse collapse w-100" id="navbarResponsive">
+        <div class="navbar-collapse collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
@@ -21,9 +21,18 @@
         @if (Route::has('login'))
             <ul class="navbar-nav float-right">
             @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
-                </li>                        
+                @if (Auth::user()->role_id !== 3)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
+                    </li>
+                @else  
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Welcome {{ Auth::user()->name }}</a>
+                    </li>       
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    </li>   
+                @endif                   
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>

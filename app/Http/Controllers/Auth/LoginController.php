@@ -48,5 +48,8 @@ class LoginController extends Controller
             return redirect('/login')
                 ->withError('Please activate your account. <a href="' . route('auth.verify.resend') . '?email=' . $user->email .'">Resend?</a>');
         }
+        if($user->role_id === 3) {
+            return redirect('/');
+        }
     }
 }
