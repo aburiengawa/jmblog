@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class AdminUsersController extends Controller
 {
     public function __construct()
-	{
-	    $this->middleware('auth');
-	}
+    {
+        $this->middleware('custom.auth');
+    }
 
     public function store(Request $request)
     {

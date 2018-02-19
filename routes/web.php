@@ -50,11 +50,11 @@ Route::resource('admin/categories', 'AdminCategoriesController', ['names' => [
 // Route::post('admin/categories', 'AdminCategoriesController@store');
 // Route::delete('admin/categories', 'AdminCategoriesController@destroy');
 
-Route::get('admin/tags', 'TagsController@index');
-Route::post('admin/tags', 'TagsController@store');
-Route::get('admin/tags/{tag}', 'TagsController@edit');
-Route::patch('admin/tags/{tag}', 'TagsController@update');
-Route::delete('admin/tags', 'TagsController@destroy');
+Route::get('admin/tags', 'AdminTagsController@index');
+Route::post('admin/tags', 'AdminTagsController@store');
+Route::get('admin/tags/{tag}', 'AdminTagsController@edit');
+Route::patch('admin/tags/{tag}', 'AdminTagsController@update');
+Route::delete('admin/tags', 'AdminTagsController@destroy');
 
 Route::get('/verify/token/{token}', 'Auth\VerificationController@verify')->name('auth.verify'); 
 Route::get('/verify/resend', 'Auth\VerificationController@resend')->name('auth.verify.resend');

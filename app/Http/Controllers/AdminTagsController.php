@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Tag;
 use Illuminate\Http\Request;
 
-class TagsController extends Controller
+class AdminTagsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('custom.auth');
+    }
     public function index()
     {
         $tags = Tag::all();

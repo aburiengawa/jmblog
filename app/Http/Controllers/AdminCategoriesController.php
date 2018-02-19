@@ -12,6 +12,10 @@ class AdminCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('custom.auth');
+    }
     public function index()
     {
         $categories = Category::all();

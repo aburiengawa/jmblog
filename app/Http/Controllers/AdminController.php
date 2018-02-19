@@ -23,13 +23,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        if (auth()->user()->role_id !== 3) {
+            return view('admin.index');
+        } else {
+            return redirect('/');
+        }
     }
 
     public function destroy()
     {
         auth()->logout();
-        
         return redirect('/admin');
     }
 

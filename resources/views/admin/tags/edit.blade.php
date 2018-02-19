@@ -5,7 +5,7 @@
 
 <div class="col-sm-6">
 	
-{!! Form::model($tag, ['method'=>'PATCH', 'action'=>['TagsController@update', $tag->id]]) !!}
+{!! Form::model($tag, ['method'=>'PATCH', 'action'=>['AdminTagsController@update', $tag->id]]) !!}
 
 	<div class="form-group">
 		{!! Form::label('name', 'Name:') !!}
@@ -18,7 +18,7 @@
 
 {!! Form::close() !!}
 
-{!! Form::open(['method'=>'DELETE', 'action'=>['TagsController@destroy']]) !!}
+{!! Form::open(['method'=>'DELETE', 'action'=>['AdminTagsController@destroy']]) !!}
 
 	<input type="hidden" name="id" value="{{$tag->id}}">
 	<div class="form-group">

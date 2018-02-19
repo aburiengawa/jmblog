@@ -5,7 +5,7 @@
 
 <div class="col-sm-4">
 
-{!! Form::open(['method'=>'POST', 'action'=>'TagsController@store']) !!}
+{!! Form::open(['method'=>'POST', 'action'=>'AdminTagsController@store']) !!}
 
 	<div class="form-group">
 		{!! Form::label('name', 'Name:') !!}

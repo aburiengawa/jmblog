@@ -8,12 +8,13 @@ use App\Post;
 use App\Photo;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('custom.auth');
     }
     public function store(Request $request)
     {
