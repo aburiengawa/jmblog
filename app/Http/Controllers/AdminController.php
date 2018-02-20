@@ -23,11 +23,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role_id !== 3) {
-            return view('admin.index');
-        } else {
-            return redirect('/');
-        }
+        // if (auth()->user()->role_id !== 3) {
+        //     return view('admin.index');
+        // } else {
+        //     return redirect('/');
+        // }
+        return view('admin.index');
     }
 
     public function destroy()

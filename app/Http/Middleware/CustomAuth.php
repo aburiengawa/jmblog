@@ -19,7 +19,7 @@ class CustomAuth
             return redirect('/login');
         }
         if (auth()->user()->role_id === 3) {
-            return redirect('/');
+            return redirect('/admin');
         }
         return $next($request);
     }
