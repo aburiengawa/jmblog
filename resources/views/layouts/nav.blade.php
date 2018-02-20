@@ -27,7 +27,7 @@
                     </li>
                 @else  
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Welcome {{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="{{ url('/admin') }}">Welcome {{ Auth::user()->name }}</a>
                     </li>       
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">Logout</a>

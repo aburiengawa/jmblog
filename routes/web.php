@@ -29,6 +29,8 @@ Route::post('users/create', 'AdminUsersController@store');
 Route::get('/users/edit/{user}', 'AdminUsersController@edit');
 Route::patch('/users/edit/{user}', 'AdminUsersController@update')->name('update_user');
 Route::delete('/users/edit/{user}', 'AdminUsersController@destroy');
+//User settings
+Route::get('admin/user-settings/{user}', 'AdminUsersController@user_settings');
 
 Route::get('/posts/category/{category}', 'PostsController@category');
 

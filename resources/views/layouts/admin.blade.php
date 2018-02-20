@@ -42,7 +42,7 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
-                    <li><a href="{{ url('/admin/user-settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <li><a href="/admin/user-settings/{{ auth()->user()->id }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
