@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\User;
 use App\Role;
@@ -13,14 +14,14 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required|max:50',
-            'email'  => 'required',
-            'password' => 'required',
-            'role_id' => 'required'
+            'name'      => 'required|unique:users|max:15',
+            'email'     => 'required|unique:users',
+            'password'  => 'required',
+            'role_id'   => 'required'
         ]);
         $input = $request->all(); 
         $input['password'] = bcrypt($request->password);
-        $input['verified'] = 1;
+        $input['verified'] = 0;
         User::create($input);
         return redirect('/admin')->withInfo('The user has been created');
     }
@@ -53,8 +54,8 @@ class AdminUsersController extends Controller
    	public function update(Request $request, $id)
     {
         $this->validate(request(), [
-            'name' => 'required|max:50',
-            'email'  => 'required',
+            'name'      => 'required|unique:users|max:50',
+            'email'     => 'required|unique:users',
         ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;

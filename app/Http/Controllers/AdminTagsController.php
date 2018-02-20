@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -21,7 +20,6 @@ class AdminTagsController extends Controller
         $tags = Tag::all();
         return view('admin.tags.index', compact('tags'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +29,6 @@ class AdminTagsController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +40,6 @@ class AdminTagsController extends Controller
         Tag::create($request->all());
         return redirect("/admin/tags")->withInfo('The tag has been saved');
     }
-
     /**
      * Display the specified resource.
      *
@@ -66,7 +62,6 @@ class AdminTagsController extends Controller
         $tag = Tag::findOrFail($id);
         return view('admin.tags.edit', compact('tag'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -79,7 +74,6 @@ class AdminTagsController extends Controller
         Tag::findOrFail($id)->update($request->all());
         return redirect('/admin/tags')->withInfo('The tag has been updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *

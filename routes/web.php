@@ -10,19 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Home page
 Route::get('/', 'PostsController@index');
+//Admin post routes
 Route::get('/posts/create', 'AdminPostsController@create');
-
 Route::get('posts/edit/{post}', 'AdminPostsController@edit');
 Route::patch('posts/edit/{post}', 'AdminPostsController@update')->name('update');
 Route::delete('posts/edit/{post}', 'AdminPostsController@destroy');
-
 Route::post('posts/create', 'AdminPostsController@store');
-
 Route::get('/posts/index', 'AdminPostsController@index');
+//Show post
 Route::get('/post/{post}', 'PostsController@show');
-
+//User routes
 Route::get('/users/index', 'AdminUsersController@index');
 Route::get('users/create', 'AdminUsersController@create');
 Route::post('users/create', 'AdminUsersController@store');
@@ -31,7 +30,7 @@ Route::patch('/users/edit/{user}', 'AdminUsersController@update')->name('update_
 Route::delete('/users/edit/{user}', 'AdminUsersController@destroy');
 //User settings
 Route::get('admin/user-settings/{user}', 'AdminUsersController@user_settings');
-
+//Show posts by category
 Route::get('/posts/category/{category}', 'PostsController@category');
 
 Auth::routes();

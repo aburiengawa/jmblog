@@ -7,11 +7,8 @@
 @section('content')
 
 <h1>Create User</h1>
-
 <div class="row">
-
 	<div class="col-sm-12">
-
 	{!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
 
 		<div class="form-group" required>
@@ -25,7 +22,7 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('password', 'Change password:') !!}
+			{!! Form::label('password', 'Password:') !!}
 			{!! Form::password('password',['class'=>'form-control']) !!}
 		</div>
 		
@@ -59,13 +56,10 @@
 
 	</div> {{--.col-sm-12--}}
 </div> {{--.row--}}
-
 {{-- <div class="row">
 	@include('includes.form-error')
 </div> --}}
-
 @section('scripts')
-
 @endsection
 
 @stop
