@@ -40,6 +40,9 @@ class AdminUsersController extends Controller
     }
     public function destroy($id)
     {
+        if ($id == 1) {
+            return redirect('/admin')->withError('Cannot delete SuperAdmin');
+        }
         $user = User::findOrFail($id);
         auth()->user()->whereId($id)->first()->delete();
         return redirect('/admin')->withInfo('User deleted');
