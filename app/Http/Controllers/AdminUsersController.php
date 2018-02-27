@@ -54,13 +54,24 @@ class AdminUsersController extends Controller
    	public function update(Request $request, $id)
     {
         $this->validate(request(), [
-            'name'      => 'required|unique:users|max:50',
-            'email'     => 'required|unique:users',
+            'name'      => 'required|max:20',
+            'email'     => 'required',
         ]);
         $user = User::findOrFail($id);
+        if ($request->name !== $user->name) {
+            $this->validate(request(), [
+                'name' => 'unique:users'
+            ]);
+        }
+        if ($request->email !== $user->email) {
+            $this->validate(request(), [
+                'email' => 'unique:users'
+            ]);
+        }
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
+        $user->verified = $request->verified;
         if($request->password) {
         	$user->password = bcrypt($request->password);
         }
