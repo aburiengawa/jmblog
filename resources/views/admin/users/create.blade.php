@@ -2,6 +2,7 @@
 
 @section('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
 @endsection
 
 @section('content')
@@ -45,6 +46,20 @@
 	        {!! Form::radio('role_id', 1) !!}
 	        <div class="state p-danger">
 	            <label>Admin</label>
+	        </div>
+	    </div>
+
+	    {!! Form::label('verified', 'Verified:') !!}
+	    <input type="hidden" name="verified" value="0" />
+	    <div class="pretty p-icon p-round p-smooth p-toggle">
+	        {!! Form::checkbox('verified', 1) !!}
+	        <div class="state p-success p-on">
+	            <i class="icon mdi mdi-check"></i>
+	            <label>Yes</label>
+	        </div>
+	        <div class="state p-danger p-off">
+	        	<i class="icon mdi mdi-close"></i>
+	            <label>No</label>
 	        </div>
 	    </div>
 

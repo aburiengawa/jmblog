@@ -14,14 +14,13 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'name'      => 'required|unique:users|max:15',
+            'name'      => 'required|unique:users|max:20',
             'email'     => 'required|unique:users',
             'password'  => 'required',
             'role_id'   => 'required'
         ]);
         $input = $request->all(); 
         $input['password'] = bcrypt($request->password);
-        $input['verified'] = 0;
         User::create($input);
         return redirect('/admin')->withInfo('The user has been created');
     }
