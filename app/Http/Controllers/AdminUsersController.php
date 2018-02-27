@@ -62,14 +62,14 @@ class AdminUsersController extends Controller
             $this->validate(request(), [
                 'name' => 'unique:users'
             ]);
+            $user->name = $request->name;
         }
         if ($request->email !== $user->email) {
             $this->validate(request(), [
                 'email' => 'unique:users'
             ]);
+            $user->email = $request->email;
         }
-        $user->name = $request->name;
-        $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->verified = $request->verified;
         if($request->password) {
