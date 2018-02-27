@@ -9,7 +9,7 @@ class AdminUsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('custom.auth', ['except' => ['user_settings', 'update', 'destroy', 'destroy_self']]);
+        $this->middleware('custom.auth', ['except' => ['user_settings', 'update', 'destroy_self']]);
     }
     public function store(Request $request)
     {
@@ -44,7 +44,8 @@ class AdminUsersController extends Controller
             return redirect('/admin')->withError('Cannot delete SuperAdmin');
         }
         $user = User::findOrFail($id);
-        auth()->user()->whereId($id)->first()->delete();
+        $user->delete();
+        // auth()->user()->whereId($id)->first()->delete();
         return redirect('/admin')->withInfo('User deleted');
     }
     public function destroy_self($id)
