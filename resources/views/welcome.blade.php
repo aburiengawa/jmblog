@@ -1,5 +1,12 @@
 @extends('layouts.master')
     <!-- Page Header -->
+    @include('includes.message-modal')
+    @if(session()->has('error'))
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>$(document).ready(function(){
+            $('#myModal').modal('show'); 
+        });</script>
+    @endif
     <header class="masthead" style="background-image: url('img/home-bg.jpg')">
       <div class="container">
         <div class="row">
@@ -16,7 +23,6 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          @include('includes.messages')
           @foreach($posts as $post)
           <div class="post-preview">
             <a href="post/{{ $post->id }}">
