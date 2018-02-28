@@ -13,7 +13,7 @@
 
 	<div class="col-sm-12">
 
-	{!! Form::model($user, ['route' => ['update_user', $user->id], 'method' => 'PATCH', 'files'=>true]) !!}
+	{!! Form::model($user, ['route' => ['update_user', $user->id], 'method' => 'PATCH']) !!}
 
 		<div class="form-group">
 			{!! Form::label('name', 'Name:') !!}
