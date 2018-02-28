@@ -5,7 +5,6 @@ namespace App\Listeners;
 use Mail;
 use App\Mail\SendVerificationToken;
 
-use App\Events\UserRequestedVerificationEmail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
