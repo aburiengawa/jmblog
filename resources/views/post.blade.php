@@ -9,7 +9,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
               <h1>{{ $post->title }}</h1>
-              <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+              <h2 class="subheading">{{ $post->subheading}}</h2>
               <span class="meta">Posted by
                 <a href="#"> {{ $post->user->name }} </a>
                 on {{ $post->created_at->toFormattedDateString() }} 
@@ -40,7 +40,7 @@
 
             {!! $post->body !!}
 
-            <h2 class="section-heading">The Final Frontier</h2>
+{{--             <h2 class="section-heading">The Final Frontier</h2>
 
             <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
 
@@ -65,7 +65,7 @@
 
             <p>Placeholder text by
               <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-              <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+              <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p> --}}
           </div>
         </div>
       </div>

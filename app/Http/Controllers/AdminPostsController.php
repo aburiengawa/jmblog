@@ -20,6 +20,7 @@ class AdminPostsController extends Controller
     {
         $this->validate(request(), [
         	'title' => 'required|max:100',
+            'subheading' => 'max:100',
         	'body' 	=> 'required'
         ]);
         $input = $request->all(); 
@@ -34,6 +35,7 @@ class AdminPostsController extends Controller
         $post = new Post;
         $post->user_id = auth()->user()->id;
         $post->title = $request->title;
+        $post->title = $request->subheading;
         $post->category_id = $request->category_id;
         $post->body = $request->body;
 
@@ -89,6 +91,7 @@ class AdminPostsController extends Controller
     {
         $this->validate(request(), [
             'title' => 'required|max:100',
+            'subheading' => 'max:100',
             'body'  => 'required'
         ]);
         $input = $request->all(); 
@@ -102,6 +105,7 @@ class AdminPostsController extends Controller
 
         $post = Post::findOrFail($id);
         $post->title = $request->title;
+        $post->subheading = $request->subheading;
         $post->category_id = $request->category_id;
         $post->body = $request->body;
 
