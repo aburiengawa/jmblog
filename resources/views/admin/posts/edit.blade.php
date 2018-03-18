@@ -54,16 +54,16 @@
 
 	{!! Form::close() !!}
 
-	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
-	
+	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id], 'id' => 'delete_form']) !!}
+	{{-- <form method="DELETE" action="AdminPostsController@destroy" id="deleteform"> --}}
 		<div class="form-group">
-			{!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
+			<input type="submit" id="submit_delete" class="btn btn-danger col-sm-6" value="Delete Post" disabled="disabled"/>
+			{{-- <button class="btn btn-danger col-sm-6">Delete Post</button> --}}
 		</div>
-
+	{{-- </form> --}}
 	{!! Form::close() !!}
 	</div>
 </div>
-
 {{-- <div class="row">
 	@include('includes.form-error')
 </div> --}}
@@ -72,6 +72,54 @@
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript" src="{{asset('js/select2.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+	$("#delete_form").submit(function(event) {
+		var form = this;
+		event.preventDefault();
+		swal({
+  			title: "You sure about this?",
+  			text: "Once deleted, you'll never get it back.",
+  			icon: "warning",
+  			buttons: ["Take me back...", "Yup!"],
+  			dangerMode: true,
+		}).then((willDelete) => {
+			if(willDelete) {
+				swal({
+					text: "Cool beans!",
+					icon: "success",
+					value: "Delete"
+				}).then((value) => {
+					if(value) {form.submit();}
+				});
+			} else {
+				alert("don't delete");
+			}
+		});
+	// 	var form = this;
+		// event.preventDefault();
+		// alert("Oh hi mark");
+		// swal({
+		// 	title: "Are you sure?",
+		// 	text: "Once deleted, you can't get this post back."
+		// 	icon: "warning",
+		// 	buttons: true,
+		// 	dangerMode: true,
+		// })
+		// .then((willDelete) => {
+		// 	if (willDelete) {
+		// 		swal("Cool beans!");
+		// 	    // form.submit();
+		// 	} else {
+		//     	swal("The post is safe!");
+		//     	return false;
+		//   	}
+		// });
+	});
+</script>
+<script>
+	$("#submit_delete").prop("disabled", false);
+</script>
 @endsection
 
 @stop

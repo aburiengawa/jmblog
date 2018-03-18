@@ -35,7 +35,7 @@ class AdminPostsController extends Controller
         $post = new Post;
         $post->user_id = auth()->user()->id;
         $post->title = $request->title;
-        $post->title = $request->subheading;
+        $post->subheading = $request->subheading;
         $post->category_id = $request->category_id;
         $post->body = $request->body;
 
@@ -118,6 +118,9 @@ class AdminPostsController extends Controller
         // auth()->user()->posts()->whereId($id)->first()->update($input);
         // session()->flash('message', 'Your post has now been updated');
         return redirect('/admin')->withInfo('Your post has been updated');
+    }
+    public function confirm_destroy($id) {
+
     }
     public function destroy($id)
     {

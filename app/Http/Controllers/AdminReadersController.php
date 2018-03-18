@@ -15,9 +15,9 @@ class AdminReadersController extends Controller
     public function user_settings(User $user)
     {
     	if (auth()->user()->id !== $user->id) {
-    		return redirect('/')->withError('You can only view the settings of your own account. 
+    		return back()->withError('<p>Nice try, buddy!</p><p>You can only view the settings of your own account. 
     			If you are authorized you can update users in the 
-    			<a href="' . route('admin') . '">Admin page</a>.');
+    			<a href="' . route('admin') . '">Admin page</a></p>.');
     	}
         return view('admin.settings.user', compact('user'));
     }
@@ -25,7 +25,7 @@ class AdminReadersController extends Controller
    	public function update(Request $request, $id)
     {
     	if (auth()->user()->id !== $user->id) {
-    		return redirect('/')->withError('You can only update your own account via user settings');
+    		return back('/')->withError('<p>Think you can fool me? I' . "'" . 'm Laravel!</p><p>You can only update your own account via user settings</p>');
     	}
         $this->validate(request(), [
             'name'      => 'required|max:20',
@@ -57,7 +57,7 @@ class AdminReadersController extends Controller
     public function destroy($id)
     {
     	if (auth()->user()->id !== $user->id) {
-    		return redirect('/')->withError('You can only delete your own account via user settings');
+    		return redirect('/')->withError('<p>You'."'".'re kidding, right?</p><p>You can only delete your own account via user settings, pal.</p>');
     	}
         $user = User::findOrFail($id);
         auth()->user()->whereId($id)->first()->delete();

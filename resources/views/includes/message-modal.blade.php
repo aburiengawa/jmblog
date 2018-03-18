@@ -5,7 +5,10 @@
             <!-- Modal body -->
             <div class="modal-body">
                 @include('includes.messages')
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                {{-- @if (hasError())  --}}
+                @if (session()->has('error')) 
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                @endif
             </div>
         </div>
     </div>

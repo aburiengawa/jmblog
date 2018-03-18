@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+import swal from 'sweetalert';
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

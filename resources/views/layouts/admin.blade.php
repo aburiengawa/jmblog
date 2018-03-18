@@ -20,6 +20,13 @@
 @yield('styles')
 </head>
 <body id="admin-page">
+@include('includes.message-modal')
+@if(session()->has('error'))
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>$(document).ready(function(){
+        $('#myModal').modal('show'); 
+    });</script>
+@endif
 <div id="wrapper">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -290,7 +297,7 @@
             <div class="col-lg-12">
 
                 <h1 class="page-header"></h1>
-                @include('includes.messages')
+                {{-- @include('includes.messages') --}}
                 @yield('content')
                 
             </div>
