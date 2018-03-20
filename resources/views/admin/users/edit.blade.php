@@ -76,10 +76,11 @@
 
 	{!! Form::close() !!}
 
-	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id], 'id' => 'delete_form']) !!}
 	
 		<div class="form-group">
-			{!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6']) !!}
+			{{-- {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6']) !!} --}}
+			<input type="submit" id="submit_delete" class="btn btn-danger col-sm-6" value="Delete User" disabled="disabled"/>
 		</div>
 
 	{!! Form::close() !!}
@@ -92,7 +93,11 @@
 </div> --}}
 
 @section('scripts')
-
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
+@include('includes.delete-swal');
+<script>
+	$("#submit_delete").prop("disabled", false);
+</script>
 @endsection
 
 @stop

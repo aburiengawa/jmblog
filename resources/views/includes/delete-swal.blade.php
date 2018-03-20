@@ -1,5 +1,4 @@
 <script>
-	swal('hello');
 	$("#delete_form").submit(function(event) {
 		var form = this;
 		event.preventDefault();
