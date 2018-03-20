@@ -21,11 +21,23 @@
 </head>
 <body id="admin-page">
 @include('includes.message-modal')
-@if(session()->has('error'))
+{{-- @if(session()->has('error'))
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>$(document).ready(function(){
         $('#myModal').modal('show'); 
     });</script>
+@endif --}}
+@if(session()->has('error'))
+    {{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
+    <script>
+        swal({
+            icon: "error",
+            title: "{{ session()->get('error') }}",
+            text: "Think you can pull one over me? I don't think so.",
+            button: "Sorry...",
+        });
+</script>
 @endif
 <div id="wrapper">
     <!-- Navigation -->
@@ -297,7 +309,7 @@
             <div class="col-lg-12">
 
                 <h1 class="page-header"></h1>
-                @include('includes.messages')
+                {{-- @include('includes.messages') --}}
                 @yield('content')
                 
             </div>

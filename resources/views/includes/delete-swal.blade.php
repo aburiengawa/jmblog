@@ -4,9 +4,9 @@
 		event.preventDefault();
 		swal({
   			title: "You sure about this?",
-  			text: "Once deleted, you'll never get it back.",
+  			text: "Once deleted, it ain't comin' back.",
   			icon: "warning",
-  			buttons: ["Take me back...", "Yup!"],
+  			buttons: ["Take me back...", "Yep!"],
   			dangerMode: true,
 		}).then((willDelete) => {
 			if(willDelete) {
