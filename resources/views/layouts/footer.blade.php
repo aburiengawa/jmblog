@@ -43,7 +43,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="{{asset('js/app.js')}}"></script>
-
   </body>
 
 </html>

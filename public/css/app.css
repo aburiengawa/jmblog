@@ -8350,11 +8350,11 @@ button.close {
   }
 }
 
-/*body {
+body {
   font-size: 20px;
   color: #333333;
   font-family: 'Lora', 'Times New Roman', serif;
-}*/
+}
 
 p {
   line-height: 1.5;
@@ -8756,21 +8756,21 @@ footer .copyright {
   text-align: center;
 }
 
-/*.btn {
+.btn {
   font-size: 14px;
   font-weight: 800;
   padding: 15px 25px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}*/
+}
 
-/*.btn-primary {
+.btn-primary {
   color: white;
   border-color: #0085A1;
   background-color: #0085A1;
-}*/
+}
 
 .btn-primary.focus,
 .btn-primary:focus {
