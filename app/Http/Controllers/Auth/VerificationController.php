@@ -23,7 +23,7 @@ class VerificationController extends Controller
         // Auth::login($token->user);
         // return redirect('/home');
      
-        return redirect('/login')->withInfo('Email verification succesful. Please login again');
+        return redirect('/login')->withInfo('Email verification successful. Please login again');
     }
  
     public function resend(Request $request)

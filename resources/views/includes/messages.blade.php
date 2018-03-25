@@ -8,10 +8,23 @@
     </div>
 @endif
 
-@if(session()->has('error'))
+{{-- @if(session()->has('error'))
             <div class="alert alert-danger">
                 {!! session()->get('error') !!}
             </div>
+@endif --}}
+
+@if(session()->has('error'))
+    {{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
+    <script>
+        swal({
+            icon: "error",
+            title: "Whoops!",
+            text: "{{ session()->get('error') }}",
+            button: "Sorry...",
+        });
+</script>
 @endif
     
 @if(session()->has('info'))

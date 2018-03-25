@@ -15,7 +15,7 @@ class AdminReadersController extends Controller
     public function user_settings(User $user)
     {
     	if (auth()->user()->id !== $user->id) {
-            return back()->withError("Nice try, buddy");
+            return back()->withError("You trying to do something funny here, buddy?");
     		// return back()->withError('<p>Nice try, buddy!</p><p>You can only view the settings of your own account. 
     		// 	If you are authorized you can update users in the 
     		// 	<a href="' . route('admin') . '">Admin page</a></p>.');
