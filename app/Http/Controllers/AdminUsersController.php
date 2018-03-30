@@ -75,6 +75,7 @@ class AdminUsersController extends Controller
         }
         $user->role_id = $request->role_id;
         $user->verified = $request->verified;
+        // ensures no verification token if verified and vice versa //
         if ($user->verified) {
             if ($user->verificationToken) {
                 $user->verificationToken->delete();
@@ -84,6 +85,7 @@ class AdminUsersController extends Controller
                 $user->verificationToken()->create(['token' => bin2hex(random_bytes(64))]);
             }
         }
+        //////////////////////////////////////////////////////////////
         if($request->password) {
         	$user->password = bcrypt($request->password);
         }

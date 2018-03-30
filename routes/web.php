@@ -21,6 +21,20 @@ Route::post('posts/create', 'AdminPostsController@store');
 Route::get('/posts/index', 'AdminPostsController@index');
 //Show post
 Route::get('/post/{post}', 'PostsController@show');
+//Admin comments routes
+Route::get('comments/index', 'AdminCommentsController@index');
+Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');
+Route::patch('comments/edit/{comment}', 'AdminCommentsController@update');
+Route::delete('comments/edit{comment}', 'AdminCommentsController@destroy');
+//Comment store
+Route::post('comments/create', 'CommentsController@store');
+//Admin comment replies
+Route::get('replies/index', 'AdminRepliesController@index');
+Route::get('replies/edit/{reply}', 'AdminRepliesController@edit');
+Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
+Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');
+//Reply store
+Route::post('replies/create', 'RepliesController@store');
 //User routes
 Route::get('/users/index', 'AdminUsersController@index');
 Route::get('users/create', 'AdminUsersController@create');
@@ -28,7 +42,6 @@ Route::post('users/create', 'AdminUsersController@store');
 Route::get('/users/edit/{user}', 'AdminUsersController@edit');
 Route::patch('/users/edit/{user}', 'AdminUsersController@update')->name('update_user');
 Route::delete('/users/edit/{user}', 'AdminUsersController@destroy');
-
 //User settings
 Route::get('admin/user-settings/{user}', 'AdminReadersController@user_settings');
 Route::delete('/admin/user-settings/{user}', 'AdminReadersController@destroy');

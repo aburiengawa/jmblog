@@ -1,4 +1,5 @@
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
+<script src="{{asset('js/tinymce4.min.js')}}"></script>
 {{-- <textarea name="content" class="form-control my-editor">{!! old('content', $content) !!}</textarea> --}}
 <script>
   var editor_config = {
