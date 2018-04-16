@@ -28,7 +28,16 @@
 @endif
     
 @if(session()->has('info'))
-    <div class="alert alert-success">
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
+        <script>
+            swal({
+                icon: "success",
+                title: "Hooray!",
+                text: "{{ session()->get('info') }}",
+                button: "Cool beans",
+            });
+    </script>
+{{--     <div class="alert alert-success">
         {!! session()->get('info') !!}
-    </div>
+    </div> --}}
 @endif

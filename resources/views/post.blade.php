@@ -21,7 +21,7 @@
         </div>
       </div>
     </header>
-
+@include('includes.messages')
     <!-- Post Content -->
     <article>
       <div class="container">

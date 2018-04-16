@@ -21,7 +21,8 @@ class AdminCommentsController extends Controller
 		$comment->user_id = auth()->user()->id;
 		$comment->post_id = $request->post_id;
 		$comment->body = $request->body;
-    	dd($comment);
+    	$comment->save();
+        return back()->withInfo('Your comment has been published');
     }
 
 }
