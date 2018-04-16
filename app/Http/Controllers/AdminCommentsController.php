@@ -11,5 +11,9 @@ class AdminCommentsController extends Controller
     {
     	return view('admin.comments.index');
     }
+    public function store() 
+    {
+    	return 'its working';
+    }
 
 }

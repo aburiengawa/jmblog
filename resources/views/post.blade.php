@@ -66,6 +66,72 @@
             <p>Placeholder text by
               <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
               <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p> --}}
+                <hr>
+                <!-- Blog Comments -->
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+                {!! Form::open(['method'=>'POST', 'action'=>'AdminCommentsController@store', 'files'=>true]) !!}
+                <input type="hidden" name="user_id" value="{{$post->user->id}}">
+                <input type="hidden" name="post_id" value="{{$post->id}}">
+                <div class="form-group">
+                  {!! Form::label('body', 'Content:') !!}
+                  {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                </div>  
+                <div class="form-group">
+                  {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
+                </div> <!-- .well -->
+{{--                     <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div> --}}
+                <hr>
+                <!-- Posted Comments -->
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Start Bootstrap
+                            <small>August 25, 2014 at 9:30 PM</small>
+                        </h4>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Start Bootstrap
+                            <small>August 25, 2014 at 9:30 PM</small>
+                        </h4>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <!-- Nested Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Nested Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+                        <!-- End Nested Comment -->
+                    </div>
+                </div>
+                {{-- end of comments --}}
+
           </div>
         </div>
       </div>
