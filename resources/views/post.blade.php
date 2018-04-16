@@ -72,7 +72,6 @@
                 <div class="well">
                     <h4>Leave a Comment:</h4>
                 {!! Form::open(['method'=>'POST', 'action'=>'AdminCommentsController@store', 'files'=>true]) !!}
-                <input type="hidden" name="user_id" value="{{$post->user->id}}">
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 <div class="form-group">
                   {!! Form::label('body', 'Content:') !!}
