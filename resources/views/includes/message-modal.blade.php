@@ -10,7 +10,8 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 @endif
                 @if (session()->has('info'))
-                  <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>  
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                @endif  
             </div>
         </div>
     </div>
