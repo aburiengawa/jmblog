@@ -76,10 +76,10 @@
                   <input type="hidden" name="post_id" value="{{$post->id}}">
                   <div class="form-group">
                     {!! Form::label('body', 'Content:') !!}
-                    {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                   </div>  
                   <div class="form-group">
-                    {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('Comment', ['class'=>'btn btn-primary']) !!}
                   </div>
                   {!! Form::close() !!}
                   </div> <!-- .well -->
@@ -97,25 +97,45 @@
                 @if($post->comments->isNotEmpty())
                   @foreach($post->comments as $comment)
                   <div class="media">
-                    <a class="pull-left" href="#">
+{{--                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
+                    </a> --}}
                     <div class="media-body">
                         <h4 class="media-heading">{{$comment->user->name}}
                             <small>{{$comment->created_at->diffForHumans()}}</small>
                         </h4>
                         {{$comment->body}}
-                        @if($post->comments->replies->isNotEmpty())
-                          @foreach($post->comments->replies as $reply)
-                            <div class="media">
+                        {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
+                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                        <div class="form-group">
+                          {!! Form::label('body', 'Content:') !!}
+                          {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
+                        </div>  
+                        <div class="form-group">
+                          {!! Form::submit('Reply', ['class'=>'btn btn-primary']) !!}
+                        </div>
+                        {!! Form::close() !!}
+                        @if($comment->replies->isNotEmpty())
+                          @foreach($comment->replies as $reply)
+{{--                             <div class="media">
                               <a class="pull-left" href="#">
                                   <img class="media-object" src="http://placehold.it/64x64" alt="">
-                              </a>
+                              </a> --}}
                               <div class="media-body">
                                   <h4 class="media-heading">{{$reply->user->name}}
                                       <small>{{$reply->created_at->diffForHumans()}}</small>
                                   </h4>
                                   {{$reply->body}}
+                                  {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
+                                  <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                  <div class="form-group">
+                                    {!! Form::label('body', 'Content:') !!}
+                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
+                                  </div>  
+                                  <div class="form-group">
+                                    {!! Form::submit('Reply', ['class'=>'btn btn-primary']) !!}
+                                  </div>
+                                  {!! Form::close() !!}
                               </div>
                           </div>
                           @endforeach

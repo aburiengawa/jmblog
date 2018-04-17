@@ -34,7 +34,7 @@ Route::get('replies/edit/{reply}', 'AdminRepliesController@edit');
 Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
 Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');
 //Reply store
-Route::post('replies/create', 'RepliesController@store');
+Route::post('replies/create', 'AdminRepliesController@store');
 //User routes
 Route::get('/users/index', 'AdminUsersController@index');
 Route::get('users/create', 'AdminUsersController@create');
