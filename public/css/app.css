@@ -8844,3 +8844,9 @@ fieldset[disabled] .btn-primary:hover {
   background-color: #0085A1;
 }
 
+/*Comments area styles*/
+.comment-textarea, .post-reply-btn {
+  visibility: hidden;
+  height: 0px !important;
+  padding: 0;
+}

@@ -50,7 +50,7 @@
                     {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                   </div>  
                   <div class="form-group">
-                    {!! Form::submit('Comment', ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('Post Comment', ['class'=>'btn btn-primary']) !!}
                   </div>
                   {!! Form::close() !!}
                 </div> <!-- .well -->
@@ -68,12 +68,15 @@
                       {{$comment->body}}
                       {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
                       <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                      <div class="form-group">
+                      <div class="form-group comment-textarea">
                         {!! Form::label('body', 'Content:') !!}
                         {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                       </div>  
                       <div class="form-group">
-                        {!! Form::submit('Reply', ['class'=>'btn btn-primary']) !!}
+                        <a href="#void">Reply</a>
+                      </div>
+                      <div class="form-group">
+                        {!! Form::submit('Post Reply', ['class'=>'btn btn-primary post-reply-btn']) !!}
                       </div>
                       {!! Form::close() !!}
                         {{-- Reply --}}
@@ -87,12 +90,15 @@
                               {{$reply->body}}
                               {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
                               <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                              <div class="form-group">
+                              <div class="form-group comment-textarea">
                                 {!! Form::label('body', 'Content:') !!}
                                 {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                               </div>  
                               <div class="form-group">
-                                {!! Form::submit('Reply', ['class'=>'btn btn-primary']) !!}
+                                <a href="#void">Reply</a>
+                              </div>
+                              <div class="form-group">
+                                {!! Form::submit('Post Reply', ['class'=>'btn btn-primary post-reply-btn']) !!}
                               </div>
                               {!! Form::close() !!}
                             </div> {{-- Reply .media-body --}}
