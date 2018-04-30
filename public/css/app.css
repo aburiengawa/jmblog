@@ -8845,8 +8845,19 @@ fieldset[disabled] .btn-primary:hover {
 }
 
 /*Comments area styles*/
-.comment-textarea, .post-reply-btn {
-  visibility: hidden;
-  height: 0px !important;
-  padding: 0;
+.hide-element {
+  display: none;
+}
+.reply-link {
+  text-decoration: underline;
+  font-size: .8em;
+  display: block;
+}
+.reply-link-hidden {
+  display: none;
+}
+.reply-hide {
+  text-decoration: underline;
+  font-size: .8em;
+  margin-left: 40px;
 }

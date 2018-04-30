@@ -68,15 +68,16 @@
                       {{$comment->body}}
                       {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
                       <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                      <div class="form-group comment-textarea">
+                      <div class="form-group hide-element">
                         {!! Form::label('body', 'Content:') !!}
                         {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                       </div>  
-                      <div class="form-group">
+                      <div class="form-group reply-link">
                         <a href="#void">Reply</a>
                       </div>
-                      <div class="form-group">
-                        {!! Form::submit('Post Reply', ['class'=>'btn btn-primary post-reply-btn']) !!}
+                      <div class="form-group hide-element">
+                        {!! Form::submit('Post Reply', ['class'=>'btn btn-primary']) !!}
+                        <span class="reply-hide"><a href="#void">Hide</a></span>
                       </div>
                       {!! Form::close() !!}
                         {{-- Reply --}}
@@ -90,15 +91,16 @@
                               {{$reply->body}}
                               {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
                               <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                              <div class="form-group comment-textarea">
+                              <div class="form-group hide-element">
                                 {!! Form::label('body', 'Content:') !!}
                                 {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                               </div>  
-                              <div class="form-group">
+                              <div class="form-group reply-link">
                                 <a href="#void">Reply</a>
                               </div>
-                              <div class="form-group">
-                                {!! Form::submit('Post Reply', ['class'=>'btn btn-primary post-reply-btn']) !!}
+                              <div class="form-group hide-element">
+                                {!! Form::submit('Post Reply', ['class'=>'btn btn-primary']) !!}
+                                <span class="reply-hide"><a href="#void">Hide</a></span>
                               </div>
                               {!! Form::close() !!}
                             </div> {{-- Reply .media-body --}}
@@ -143,5 +145,21 @@
 
     <hr>
     <script>
-      
+      var replyLink = document.getElementsByClassName("reply-link");
+      var replyHide = document.getElementsByClassName("reply-hide");
+      for(var i = 0; i < replyLink.length; i++) {
+        replyLink[i].addEventListener("click", function(){
+          this.previousElementSibling.classList.toggle("hide-element");
+          this.nextElementSibling.classList.toggle("hide-element");
+          this.classList.toggle("reply-link-hidden");
+        });
+      }
+     for(var i = 0; i < replyHide.length; i++) {
+      replyHide[i].addEventListener("click", function(){
+          this.parentElement.classList.toggle("hide-element");
+          this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
+          this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");
+          // this.classList.toggle("reply-link-hidden");
+        });
+      }
     </script>
