@@ -1,44 +1,33 @@
 @extends('layouts.admin')
 @section('content')
-<h1>What's up?</h1>
-{{-- <h1>Posts</h1>
+<h1>Comments</h1>
 <table class="table">
 	<thead>
 		<tr>
 			<th>User</th>
-			<th>Title</th>
-			<th>Body</th>
-			<th>Post link</th>
-			<th>Comments</th>
+			<th>Comment</th>
+			<th>Post Link</th>
 			<th>Created</th>
 			<th>Update</th>
 		</tr>
 	</thead>
 	<tbody>
-	
-	@if($posts)
-
-		@foreach($posts as $post)
-	
+	@if($comments)
+		@foreach($comments as $comment)
 		<tr>
-			<td>{{$post->user->name}}</td>
-			<td><a href="/posts/edit/{{ $post->id }}">{{$post->title}}</a></td>
-			<td>{!!str_limit($post->body, 20)!!}</td>
-			<td><a href="/post/{{ $post->id }}">View Post</a></td>
-			<td><a href="">View Comments</a></td>
-			<td>{{$post->created_at->diffForHumans()}}</td>
-			<td>{{$post->updated_at->diffForHumans()}}</td>
+			<td>{{$comment->user->name}}</td>
+			<td><a href="/comments/edit/{{ $comment->post->id }}">{!!str_limit($comment->body, 20)!!}</a></td>
+			<td><a href="/post/{{ $comment->post->id }}">{{$comment->post->title}}</a></td>
+			<td>{{$comment->created_at->diffForHumans()}}</td>
+			<td>{{$comment->post->updated_at->diffForHumans()}}</td>
 		</tr>
-
-		@endforeach
-		
+		@endforeach	
 	@endif
-
 	</tbody>
 </table>
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-5">
-		{{$posts->render()}}
+		{{$comments->render()}}
 	</div>
-</div> --}}
+</div>
 @stop

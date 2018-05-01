@@ -9,7 +9,15 @@ class AdminCommentsController extends Controller
 {
     public function index() 
     {
-    	return view('admin.comments.index');
+    	if (auth()->user()->role_id === 1) {
+            $comments = Comment::orderBy('created_at', 'desc')->paginate(10);
+            return view('admin.comments.index', compact('comments'));
+        }
+        if(auth()->user()->role_id === 2) {
+            $userId = auth()->user()->id;
+            $comments = Comment::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->paginate(10);
+            return view('admin.comments.index', compact('comments'));
+        }
     }
     public function store(Request $request) 
     {
@@ -23,6 +31,10 @@ class AdminCommentsController extends Controller
 		$comment->body = $request->body;
     	$comment->save();
         return back()->withInfo('Your comment has been published');
+    }
+    public function edit(Comment $comment)
+    {
+        return view('admin.comments.edit', compact('comment'));
     }
 
 }

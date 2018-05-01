@@ -8850,7 +8850,6 @@ fieldset[disabled] .btn-primary:hover {
 }
 .reply-link {
   text-decoration: underline;
-  font-size: .8em;
   display: block;
 }
 .reply-link-hidden {
@@ -8858,6 +8857,5 @@ fieldset[disabled] .btn-primary:hover {
 }
 .reply-hide {
   text-decoration: underline;
-  font-size: .8em;
   margin-left: 40px;
 }
