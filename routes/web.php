@@ -23,6 +23,7 @@ Route::get('/posts/index', 'AdminPostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
 //Admin comments routes
 Route::get('comments/index', 'AdminCommentsController@index');
+// Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');
 Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');
 Route::patch('comments/edit/{comment}', 'AdminCommentsController@update');
 Route::delete('comments/edit{comment}', 'AdminCommentsController@destroy');

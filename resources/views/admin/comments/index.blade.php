@@ -16,7 +16,7 @@
 		@foreach($comments as $comment)
 		<tr>
 			<td>{{$comment->user->name}}</td>
-			<td><a href="/comments/edit/{{ $comment->post->id }}">{!!str_limit($comment->body, 20)!!}</a></td>
+			<td><a href="/comments/edit/{{ $comment->id }}">{!!str_limit($comment->body, 20)!!}</a></td>
 			<td><a href="/post/{{ $comment->post->id }}">{{$comment->post->title}}</a></td>
 			<td>{{$comment->created_at->diffForHumans()}}</td>
 			<td>{{$comment->post->updated_at->diffForHumans()}}</td>
