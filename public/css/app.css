@@ -8848,14 +8848,14 @@ fieldset[disabled] .btn-primary:hover {
 .hide-element {
   display: none;
 }
-.reply-link {
+.reply-link, .prepend-reply-link {
   text-decoration: underline;
   display: block;
 }
 .reply-link-hidden {
   display: none;
 }
-.reply-hide {
+.reply-hide, .prepend-reply-hide {
   text-decoration: underline;
   margin-left: 40px;
 }

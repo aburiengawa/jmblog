@@ -21,6 +21,7 @@ Route::post('posts/create', 'AdminPostsController@store');
 Route::get('/posts/index', 'AdminPostsController@index');
 //Show post
 Route::get('/post/{post}', 'PostsController@show');
+Route::get('/getcomments', 'PostsController@getcomments');
 //Admin comments routes
 Route::get('comments/index', 'AdminCommentsController@index');
 // Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');

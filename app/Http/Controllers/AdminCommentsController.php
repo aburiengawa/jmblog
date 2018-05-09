@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class AdminCommentsController extends Controller
@@ -22,19 +23,30 @@ class AdminCommentsController extends Controller
     public function store(Request $request) 
     {
     	$comment = new Comment;
-        $this->validate(request(), [
-        	'post_id' => 'required',
-        	'body' 	=> 'required|max:200'
-        ]);
-		$comment->user_id = auth()->user()->id;
-		$comment->post_id = $request->post_id;
-		$comment->body = $request->body;
-    	$comment->save();
-        return back()->withInfo('Your comment has been published');
+    	if ($request->ajax()) {
+	        $this->validate(request(), [
+	        	'post_id' => 'required',
+	        	'body' 	=> 'required|max:200'
+	        ]);
+        	// Log::debug($request);
+			$comment->user_id = auth()->user()->id;
+			$comment->post_id = $request->post_id;
+			$comment->body = $request->body;
+	    	$comment->save();
+	    	$comment_id = $comment->id;
+	    	return $comment_id;
+    	}
+        // return back()->withInfo('Your comment has been published');
     }
     public function edit(Comment $comment)
     {
         return view('admin.comments.edit', compact('comment'));
     }
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        auth()->user()->comments()->whereId($id)->first()->delete();
+        return redirect('/comments/index')->withInfo('Your comment has been deleted');
+    }       
 
 }

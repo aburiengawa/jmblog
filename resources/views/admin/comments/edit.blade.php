@@ -15,7 +15,7 @@
 			{!! Form::submit('Update Comment', ['class'=>'btn btn-primary col-sm-6']) !!}
 		</div>
 	{!! Form::close() !!}
-	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $comment->id], 'id' => 'delete_form']) !!}
+	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminCommentsController@destroy', $comment->id], 'id' => 'delete_form']) !!}
 		<div class="form-group">
 			<input type="submit" id="submit_delete" class="btn btn-danger col-sm-6" value="Delete Post" disabled="disabled"/>
 		</div>
