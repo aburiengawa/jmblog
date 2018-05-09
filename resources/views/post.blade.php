@@ -65,17 +65,18 @@
                                 <small>{{$comment->created_at->diffForHumans()}}</small>
                             </h4>
                             {{$comment->body}}
-                            {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
+                            {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                <input type="hidden" name="username" value="{{Auth::user()->name}}">
                                 <div class="form-group hide-element">
                                     {!! Form::label('body', 'Content:') !!}
-                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
+                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                 </div>  
                                 <div class="form-group reply-link">
                                     <a href="#void"><small>REPLY</small></a>
                                 </div>
-                                 <div class="form-group hide-element">
-                                    {!! Form::submit('Post Reply', ['class'=>'btn btn-primary']) !!}
+                                <div class="form-group hide-element">
+                                    {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
                                     <span class="reply-hide">
                                         <a href="#void"><small>HIDE</small></a>
                                     </span>
@@ -94,13 +95,13 @@
                                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">      
                                                 <div class="form-group hide-element">
                                                     {!! Form::label('body', 'Content:') !!}
-                                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
+                                                    {!! Form::textarea('body', null, ['class'=>'reply-form form-control', 'rows' => 2]) !!}
                                                 </div>  
                                                 <div class="form-group reply-link">
                                                     <a href="#void"><small>REPLY</small></a>
                                                 </div>
                                                 <div class="form-group hide-element">
-                                                    {!! Form::submit('Post Reply', ['class'=>'btn btn-primary']) !!}
+                                                    {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
                                                     <span class="reply-hide">
                                                         <a href="#void"><small>HIDE</small></a>
                                                     </span>
@@ -141,6 +142,26 @@
                     success: function (response) {
                         $("#comment-textarea").val('');   
                         $(".comments-replies-container").prepend('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!! Form::open(["method"=>"POST","action"=>"AdminRepliesController@store","files"=>true]) !!}<input type="hidden" name="comment_id" value='+response+'><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"form-control","rows"=>2])!!}</div><div class="form-group prepend-reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"btn btn-primary"]) !!}<span class="prepend-reply-hide"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
+                        prependReplyHideLink();                                  
+                    }
+                });
+            });
+        });
+        $('.send-reply').click(function () {
+            $('.reply-form').submit(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var token = $this.find('input[name=_token]').val();
+                var comment_id = $this.find('input[name=comment_id]').val();
+                var username = $this.find('input[name=username]').val();
+                var body = $this.find('textarea[name=body]').val();
+                $.ajax({
+                    url: '../replies/create',
+                    type: "POST",
+                    data: {_token: token, comment_id: comment_id, body: body},
+                    success: function (response) {
+                        $(".reply-textarea").val('');   
+                        $this.after(body);
                         prependReplyHideLink();                                  
                     }
                 });
