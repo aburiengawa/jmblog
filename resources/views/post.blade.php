@@ -70,7 +70,7 @@
                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">
                                 <div class="form-group hide-element">
                                     {!! Form::label('body', 'Content:') !!}
-                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
+                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2, 'required']) !!}
                                 </div>  
                                 <div class="form-group reply-link">
                                     <a href="#void"><small>REPLY</small></a>
@@ -91,11 +91,12 @@
                                                 <small>{{$reply->created_at->diffForHumans()}}</small>
                                             </h4>
                                             {{$reply->body}}
-                                            {!! Form::open(['method'=>'POST', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
-                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">      
+                                            {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store', 'files'=>true]) !!}
+                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                <input type="hidden" name="username" value="{{Auth::user()->name}}">      
                                                 <div class="form-group hide-element">
                                                     {!! Form::label('body', 'Content:') !!}
-                                                    {!! Form::textarea('body', null, ['class'=>'reply-form form-control', 'rows' => 2]) !!}
+                                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
                                                 </div>  
                                                 <div class="form-group reply-link">
                                                     <a href="#void"><small>REPLY</small></a>
@@ -129,6 +130,8 @@
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
         $('.send-comment').click(function () {
+            //prevents multiple binding of click
+            $('.send-comment').unbind("click");
             $('#comment-form').submit(function (e) {
                 e.preventDefault();
                 var token = $('input[name=_token]').val();
@@ -141,13 +144,28 @@
                     data: {_token: token, post_id: post_id, body: body},
                     success: function (response) {
                         $("#comment-textarea").val('');   
-                        $(".comments-replies-container").prepend('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!! Form::open(["method"=>"POST","action"=>"AdminRepliesController@store","files"=>true]) !!}<input type="hidden" name="comment_id" value='+response+'><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"form-control","rows"=>2])!!}</div><div class="form-group prepend-reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"btn btn-primary"]) !!}<span class="prepend-reply-hide"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
-                        prependReplyHideLink();                                  
+                        var newComment = $('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!! Form::open(["method"=>"POST","action"=>"AdminRepliesController@store","files"=>true]) !!}<input type="hidden" name="comment_id" value='+response+'><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"form-control","rows"=>2])!!}</div><div class="form-group reply-anchor"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"btn btn-primary"]) !!}<span class="hide-anchor"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
+                        // $(newComment).prependTo(".comments-replies-container");
+                        $(".comments-replies-container").prepend(newComment);
+                        var replyAnchor = newComment.find('.reply-anchor');
+                        var hideAnchor = newComment.find('.hide-anchor');
+                        replyAnchor[0].addEventListener("click", function(){
+                          this.previousElementSibling.classList.toggle("hide-element");
+                          this.nextElementSibling.classList.toggle("hide-element");
+                          this.classList.toggle("reply-link-hidden");
+                        });
+                        hideAnchor[0].addEventListener("click", function(){
+                            this.parentElement.classList.toggle("hide-element");
+                            this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
+                            this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");
+                        });                           
                     }
                 });
             });
         });
         $('.send-reply').click(function () {
+            //prevents multiple binding of click
+            $('.send-reply').unbind("click");
             $('.reply-form').submit(function (e) {
                 e.preventDefault();
                 var $this = $(this);
