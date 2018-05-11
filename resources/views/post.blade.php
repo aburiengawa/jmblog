@@ -58,7 +58,7 @@
             <div class="comments-replies-container">
             {{-- <span id="post_id-holder">{{$post->post_id}}</span> --}}
             @if($post->comments->isNotEmpty())
-                @foreach($post->comments as $comment)
+                @foreach($post->comments->reverse() as $comment)
                     <div class="media">
                         <div class="media-body">
                             <h4 class="media-heading">{{$comment->user->name}}
@@ -70,12 +70,12 @@
                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">
                                 <div class="form-group hide-element">
                                     {!! Form::label('body', 'Content:') !!}
-                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2, 'required']) !!}
+                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                 </div>  
                                 <div class="form-group reply-link">
-                                    <a href="#void"><small>REPLY</small></a>
+                                        <a href="#void"><small>REPLY</small></a>
                                 </div>
-                                <div class="form-group hide-element">
+                                <div class="form-group reply-elements hide-element">
                                     {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
                                     <span class="reply-hide">
                                         <a href="#void"><small>HIDE</small></a>
@@ -84,7 +84,7 @@
                             {!! Form::close() !!}
                             {{-- Reply --}}
                             @if($comment->replies->isNotEmpty())
-                                @foreach($comment->replies as $reply)
+                                @foreach($comment->replies->reverse() as $reply)
                                     <div class="media ml-5">
                                         <div class="media-body">
                                             <h4 class="media-heading">{{$reply->user->name}}
@@ -96,7 +96,7 @@
                                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">      
                                                 <div class="form-group hide-element">
                                                     {!! Form::label('body', 'Content:') !!}
-                                                    {!! Form::textarea('body', null, ['class'=>'form-control', 'rows' => 2]) !!}
+                                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2]) !!}
                                                 </div>  
                                                 <div class="form-group reply-link">
                                                     <a href="#void"><small>REPLY</small></a>
@@ -143,22 +143,22 @@
                     type: "POST",
                     data: {_token: token, post_id: post_id, body: body},
                     success: function (response) {
+                        // alert("Success");
                         $("#comment-textarea").val('');   
-                        var newComment = $('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!! Form::open(["method"=>"POST","action"=>"AdminRepliesController@store","files"=>true]) !!}<input type="hidden" name="comment_id" value='+response+'><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"form-control","rows"=>2])!!}</div><div class="form-group reply-anchor"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"btn btn-primary"]) !!}<span class="hide-anchor"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
-                        // $(newComment).prependTo(".comments-replies-container");
+                        var newComment = $('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!! Form::open(["method"=>"POST","action"=>"AdminRepliesController@store","files"=>true]) !!}<input type="hidden" name="comment_id" value='+response+'><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"form-control","rows"=>2])!!}</div><div class="form-group reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"btn btn-primary"]) !!}<span class="reply-hide"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
                         $(".comments-replies-container").prepend(newComment);
-                        var replyAnchor = newComment.find('.reply-anchor');
-                        var hideAnchor = newComment.find('.hide-anchor');
-                        replyAnchor[0].addEventListener("click", function(){
-                          this.previousElementSibling.classList.toggle("hide-element");
-                          this.nextElementSibling.classList.toggle("hide-element");
-                          this.classList.toggle("reply-link-hidden");
-                        });
-                        hideAnchor[0].addEventListener("click", function(){
-                            this.parentElement.classList.toggle("hide-element");
-                            this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
-                            this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");
-                        });                           
+                        // var replyAnchor = newComment.find('.reply-anchor');
+                        // var hideAnchor = newComment.find('.hide-anchor');
+                        // replyAnchor[0].addEventListener("click", function(){
+                        //   this.previousElementSibling.classList.toggle("hide-element");
+                        //   this.nextElementSibling.classList.toggle("hide-element");
+                        //   this.classList.toggle("reply-link-hidden");
+                        // });
+                        // hideAnchor[0].addEventListener("click", function(){
+                        //     this.parentElement.classList.toggle("hide-element");
+                        //     this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
+                        //     this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");
+                        // });                           
                     }
                 });
             });
@@ -171,6 +171,7 @@
                 var $this = $(this);
                 var token = $this.find('input[name=_token]').val();
                 var comment_id = $this.find('input[name=comment_id]').val();
+                console.log(comment_id);
                 var username = $this.find('input[name=username]').val();
                 var body = $this.find('textarea[name=body]').val();
                 $.ajax({
@@ -178,11 +179,25 @@
                     type: "POST",
                     data: {_token: token, comment_id: comment_id, body: body},
                     success: function (response) {
-                        $(".reply-textarea").val('');   
-                        $this.after(body);
-                        prependReplyHideLink();                                  
+                        $(".reply-textarea").val('');  
+                        var newReply = $('<div class="media ml-5"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4>'+body+'{!!Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store','files'=>true])!!}<input type="hidden" name="comment_id" value='+comment_id+'><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!! Form::label('body','Content:') !!}{!! Form::textarea('body',null, ['class'=>'form-control','rows' => 2]) !!}</div><div class="form-group reply-anchor"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!!Form::submit('Post Reply',['class'=>'send-reply btn btn-primary'])!!}<span class="hide-anchor"><a href="#void"><small>HIDE</small></a></span></div>{!! Form::close() !!}</div></div>');
+                        $this.parent().parent().after(newReply);
+                        // var replyAnchor = newReply.find('.reply-anchor');
+                        // var hideAnchor = newReply.find('.hide-anchor');
+                        // replyAnchor[0].addEventListener("click", function(){
+                        //   this.previousElementSibling.classList.toggle("hide-element");
+                        //   this.nextElementSibling.classList.toggle("hide-element");
+                        //   this.classList.toggle("reply-link-hidden");
+                        // });
+                        // hideAnchor[0].addEventListener("click", function(){
+                        //     this.parentElement.classList.toggle("hide-element");
+                        //     this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
+                        //     this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");
+                        // });                        
+                        // prependReplyHideLink();                                  
                     }
                 });
+                // console.log(data);
             });
         });
         function getComments(id){

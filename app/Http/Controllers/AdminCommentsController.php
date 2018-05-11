@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class AdminCommentsController extends Controller
@@ -35,7 +35,9 @@ class AdminCommentsController extends Controller
 	    	$comment->save();
 	    	$comment_id = $comment->id;
 	    	return $comment_id;
-    	}
+    	} else {
+            return ("uh oh");
+        }
         // return back()->withInfo('Your comment has been published');
     }
     public function edit(Comment $comment)
