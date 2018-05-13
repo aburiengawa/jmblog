@@ -28,17 +28,13 @@ class AdminCommentsController extends Controller
 	        	'post_id' => 'required',
 	        	'body' 	=> 'required|max:200'
 	        ]);
-        	// Log::debug($request);
 			$comment->user_id = auth()->user()->id;
 			$comment->post_id = $request->post_id;
 			$comment->body = $request->body;
 	    	$comment->save();
 	    	$comment_id = $comment->id;
 	    	return $comment_id;
-    	} else {
-            return ("uh oh");
-        }
-        // return back()->withInfo('Your comment has been published');
+    	}
     }
     public function edit(Comment $comment)
     {
@@ -50,5 +46,4 @@ class AdminCommentsController extends Controller
         auth()->user()->comments()->whereId($id)->first()->delete();
         return redirect('/comments/index')->withInfo('Your comment has been deleted');
     }       
-
 }

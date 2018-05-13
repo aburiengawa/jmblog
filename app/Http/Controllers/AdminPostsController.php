@@ -129,7 +129,11 @@ class AdminPostsController extends Controller
             unlink(public_path() . "/photos/shares/" . $post->photo->file);
             Photo::findOrFail($post->photo_id)->delete();
         }
-        auth()->user()->posts()->whereId($id)->first()->delete();
+        if (auth()->user()->role_id === 1) {
+            $post->delete();
+        } else {
+            auth()->user()->posts()->whereId($id)->first()->delete();
+        }
         return redirect('/admin')->withInfo('Your post has been deleted');
     }   
 }

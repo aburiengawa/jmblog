@@ -26,15 +26,4 @@ class PostsController extends Controller
     	$posts = Post::whereIn('category_id', $category)->orderBy('created_at', 'desc')->simplePaginate(5);
     	return view('categories.index', compact('category', 'posts'));
     }
-    public function getcomments(Request $request) 
-    {
-        $id = $request->id;
-        $post = Post::findOrFail($id);
-        $comments = $post->comments;
-        foreach ($comments as &$comment) {
-            $comment->created_at = $comment->created_at->diffForHumans();
-        }
-        return compact('comments');
-    }
-
 }

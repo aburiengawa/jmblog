@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('content')
     <!-- Page Header -->
     @include('includes.message-modal')
     @if(session()->has('error'))
@@ -96,3 +97,4 @@
     </div>
 
     <hr>
+@endsection
