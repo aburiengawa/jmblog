@@ -21,6 +21,7 @@ class AdminRepliesController extends Controller
             $reply->body = $request->body;
             $reply->save();
             $reply_id = $reply->id;
+            return $reply_id;
         } else {
             return ("Uh oh");
         }

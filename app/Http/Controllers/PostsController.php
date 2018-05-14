@@ -26,9 +26,14 @@ class PostsController extends Controller
     	$posts = Post::whereIn('category_id', $category)->orderBy('created_at', 'desc')->simplePaginate(5);
     	return view('categories.index', compact('category', 'posts'));
     }
-    public function destroy(Request $request)
+    public function destroyComment(Request $request)
     {
         $id = $request->id;
-        return "Triggered destroy function. Id is: ".$id;
+        return $id;
+    }
+    public function destroyReply(Request $request)
+    {
+        $id = $request->id;
+        return $id;
     }
 }

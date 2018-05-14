@@ -19,7 +19,7 @@
                         data: {_token: token, post_id: post_id, body: body},
                         success: function (response) {
                             $("#comment-textarea").val('');   
-                            var newComment = $('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4><div class="comment-body">'+body+'</div>{!! Form::open(["method"=>"POST", "class"=>"reply-form", "action"=>"AdminRepliesController@store"]) !!}<input type="hidden" name="comment_id" value='+response+'><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"reply-textarea form-control","rows"=>2, "required"])!!}</div><div class="form-group reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"send-reply btn btn-primary"]) !!}<span class="reply-hide"><a href="#void"><small>HIDE</small></a></span><span class="delete-link"><a href="#void"><small>DELETE</small></a></span></div>{!! Form::close() !!}</div></div>');
+                            var newComment = $('<div class="media"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4><input class="comment-id" type="hidden" name="id" value='+response+'><div class="comment-body">'+body+'</div>{!! Form::open(["method"=>"POST", "class"=>"reply-form", "action"=>"AdminRepliesController@store"]) !!}<input type="hidden" name="comment_id" value='+response+'><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!!Form::label("body","Content:") !!}{!! Form::textarea("body",null,["class"=>"reply-textarea form-control","rows"=>2, "required"])!!}</div><div class="form-group reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply",["class"=>"send-reply btn btn-primary"]) !!}<span class="reply-hide"><a href="#void"><small>HIDE</small></a></span><span class="delete-comment"><a href="#void"><small>DELETE</small></a></span></div>{!! Form::close() !!}</div></div>');
                             $("#comments-replies-container").prepend(newComment);                          
                         }
                     });
@@ -29,7 +29,7 @@
                 $('#comment-textarea').val('');
                 var thisForm = $(this).parent().parent();
                 thisForm[0].reportValidity();
-            }
+            }          
         });
         $('#comments-replies-container').on('click', '.send-reply', function(e){
             var bodyContent = $(this).parent().parent().find('textarea[name=body]').val().trim();
@@ -48,9 +48,8 @@
                         data: {_token: token, comment_id: comment_id, body: body},
                         success: function (response) {
                             $(".reply-textarea").val('');  
-                            var newReply = $('<div class="media ml-5"><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4><div class="comment-body">'+body+'</div>{!! Form::open(["method"=>"POST", "class"=>"reply-form", "action"=>"AdminRepliesController@store"]) !!}<input type="hidden" name="comment_id" value="'+comment_id+'"><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!! Form::label("body", "Content:") !!}{!! Form::textarea("body", null, ["class"=>"reply-textarea form-control", "rows" => 2, "required"]) !!}</div><div class="form-group reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply", ["class"=>"send-reply btn btn-primary"]) !!}<span class="reply-hide"><a href="#void"><small>HIDE</small></a></span><span class="delete-link"><a href="#void"><small>DELETE</small></a></span></div>{!! Form::close() !!}</div></div>');
-                            $this.parent().parent().after(newReply);  
-                            alert("Fired");                             
+                            var newReply = $('<div class="media ml-5"><input class="comment-id-delete" type="hidden" value='+comment_id+'><div class="media-body"><h4 class="media-heading">'+username+'<small> Just now</small></h4><input class="reply-id" type="hidden" name="id" value='+response+'><div class="comment-body">'+body+'</div>{!! Form::open(["method"=>"POST", "class"=>"reply-form", "action"=>"AdminRepliesController@store"]) !!}<input type="hidden" name="comment_id" value="'+comment_id+'"><input type="hidden" name="username" value="{{Auth::user()->name}}"><div class="form-group hide-element">{!! Form::label("body", "Content:") !!}{!! Form::textarea("body", null, ["class"=>"reply-textarea form-control", "rows" => 2, "required"]) !!}</div><div class="form-group reply-link"><a href="#void"><small>REPLY</small></a></div><div class="form-group hide-element">{!! Form::submit("Post Reply", ["class"=>"send-reply btn btn-primary"]) !!}<span class="reply-hide"><a href="#void"><small>HIDE</small></a></span><span class="delete-reply"><a href="#void"><small>DELETE</small></a></span></div>{!! Form::close() !!}</div></div>');
+                            $this.after(newReply);                              
                         }
                     });
                 });
@@ -61,14 +60,30 @@
                 thisForm[0].reportValidity();
             }
         });
-        $('#comments-replies-container').on('click', '.delete-link', function(e){
+        $('#comments-replies-container').on('click', '.delete-comment', function(e){
             e.preventDefault();
             $(this).off('click');
-            alert('clicked');
             var token = $('input[name=_token]').val();
-            var id = $(this).parents().eq(2).find('.comment-reply-id').val();
+            var id = $(this).parents().eq(2).find('.comment-id').val();
+            var comment_id = $(this).parent().eq(3).find('.comment-id-delete').val();            
             $.ajax({
-                url: '../comment-reply/delete',
+                url: '../post-comment/delete',
+                type: "DELETE",
+                data: {_token: token, id: id},
+                success: function (response) {
+                    alert("Success. Id is: "+response);                             
+                }
+            });               
+            $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
+            $(this).parents().eq(3).remove();
+        });
+        $('#comments-replies-container').on('click', '.delete-reply', function(e){
+            e.preventDefault();
+            $(this).off('click');
+            var token = $('input[name=_token]').val();
+            var id = $(this).parents().eq(2).find('.reply-id').val();
+            $.ajax({
+                url: '../post-reply/delete',
                 type: "DELETE",
                 data: {_token: token, id: id},
                 success: function (response) {

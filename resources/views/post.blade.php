@@ -1,5 +1,4 @@
 @extends('layouts.master')
-    <!-- Page Header -->
 @section('content')
 <header class="masthead" style="background-image: url('{{$post->photo ? '/photos/shares/' . $post->photo->file : '/img/post-bg.jpg'}}')">
     <div class="container">
@@ -64,7 +63,7 @@
                             <h4 class="media-heading">{{$comment->user->name}}
                                 <small>{{$comment->created_at->diffForHumans()}}</small>
                             </h4>
-                            <input class="comment-reply-id" type="hidden" name="id" value="{{$comment->id}}">
+                            <input class="comment-id" type="hidden" name="id" value="{{$comment->id}}">
                             <div class="comment-body">{{$comment->body}}</div>
                             {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -81,7 +80,7 @@
                                     <span class="reply-hide">
                                         <a href="#void"><small>HIDE</small></a>
                                     </span>
-                                    <span class="delete-link">
+                                    <span class="delete-comment">
                                         <a href="#void"><small>DELETE</small></a>
                                     </span>
                                 </div>
@@ -90,11 +89,12 @@
                             @if($comment->replies->isNotEmpty())
                                 @foreach($comment->replies as $reply)
                                     <div class="media ml-5">
+                                        <input class="comment-id-delete" type="hidden" value="{{$comment->id}}">
                                         <div class="media-body">
                                             <h4 class="media-heading">{{$reply->user->name}}
                                                 <small>{{$reply->created_at->diffForHumans()}}</small>
                                             </h4>
-                                            <input class="comment-reply-id" type="hidden" name="id" value="{{$comment->id}}">
+                                            <input class="reply-id" type="hidden" name="id" value="{{$reply->id}}">
                                             <div class="comment-body">{{$reply->body}}</div>
                                             {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -111,7 +111,7 @@
                                                     <span class="reply-hide">
                                                         <a href="#void"><small>HIDE</small></a>
                                                     </span>
-                                                    <span class="delete-link">
+                                                    <span class="delete-reply">
                                                         <a href="#void"><small>DELETE</small></a>
                                                     </span>
                                                 </div>
