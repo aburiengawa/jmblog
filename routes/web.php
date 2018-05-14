@@ -37,6 +37,8 @@ Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
 Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');
 //Reply store
 Route::post('replies/create', 'AdminRepliesController@store');
+//Delete comments and replies from post
+Route::delete('comment-reply/delete', 'PostsController@destroy');
 //User routes
 Route::get('/users/index', 'AdminUsersController@index');
 Route::get('users/create', 'AdminUsersController@create');

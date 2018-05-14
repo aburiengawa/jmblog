@@ -8855,7 +8855,7 @@ fieldset[disabled] .btn-primary:hover {
 .reply-link-hidden {
   display: none;
 }
-.reply-hide {
+.reply-hide, .delete-link {
   /*text-decoration: underline;*/
   margin-left: 40px;
 }

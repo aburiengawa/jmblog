@@ -64,7 +64,8 @@
                             <h4 class="media-heading">{{$comment->user->name}}
                                 <small>{{$comment->created_at->diffForHumans()}}</small>
                             </h4>
-                            {{$comment->body}}
+                            <input class="comment-reply-id" type="hidden" name="id" value="{{$comment->id}}">
+                            <div class="comment-body">{{$comment->body}}</div>
                             {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">
@@ -80,7 +81,7 @@
                                     <span class="reply-hide">
                                         <a href="#void"><small>HIDE</small></a>
                                     </span>
-                                    <span class="reply-hide">
+                                    <span class="delete-link">
                                         <a href="#void"><small>DELETE</small></a>
                                     </span>
                                 </div>
@@ -93,7 +94,8 @@
                                             <h4 class="media-heading">{{$reply->user->name}}
                                                 <small>{{$reply->created_at->diffForHumans()}}</small>
                                             </h4>
-                                            {{$reply->body}}
+                                            <input class="comment-reply-id" type="hidden" name="id" value="{{$comment->id}}">
+                                            <div class="comment-body">{{$reply->body}}</div>
                                             {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">      
@@ -109,7 +111,7 @@
                                                     <span class="reply-hide">
                                                         <a href="#void"><small>HIDE</small></a>
                                                     </span>
-                                                    <span class="reply-hide">
+                                                    <span class="delete-link">
                                                         <a href="#void"><small>DELETE</small></a>
                                                     </span>
                                                 </div>
