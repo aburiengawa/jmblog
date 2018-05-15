@@ -26,4 +26,8 @@ class AdminRepliesController extends Controller
             return ("Uh oh");
         }
     }
+    public function destroy($id)
+    {
+        
+    }
 }
