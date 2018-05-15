@@ -55,7 +55,7 @@
 {{-- sweetalert cdn --}}
 {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
-@include('includes.delete-swal');
+@include('includes.delete-swal')
 <script>
 	$("#submit_delete").prop("disabled", false);
 </script>

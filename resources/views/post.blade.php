@@ -132,5 +132,7 @@
 </article>
 <hr>
 @include('includes.comments-ajax')
+@include('includes.delete-comment-reply-swal')
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/reply-hide.js')}}"></script>
 @endsection

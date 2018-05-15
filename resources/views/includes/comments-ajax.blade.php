@@ -60,37 +60,37 @@
                 thisForm[0].reportValidity();
             }
         });
-        $('#comments-replies-container').on('click', '.delete-comment', function(e){
-            e.preventDefault();
-            $(this).off('click');
-            var token = $('input[name=_token]').val();
-            var id = $(this).parents().eq(2).find('.comment-id').val();
-            var comment_id = $(this).parent().eq(3).find('.comment-id-delete').val();            
-            $.ajax({
-                url: '../post-comment/delete',
-                type: "DELETE",
-                data: {_token: token, id: id},
-                success: function (response) {
-                    alert("Success. Id is: "+response);                             
-                }
-            });               
-            $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
-            $(this).parents().eq(3).remove();
-        });
-        $('#comments-replies-container').on('click', '.delete-reply', function(e){
-            e.preventDefault();
-            $(this).off('click');
-            var token = $('input[name=_token]').val();
-            var id = $(this).parents().eq(2).find('.reply-id').val();
-            $.ajax({
-                url: '../post-reply/delete',
-                type: "DELETE",
-                data: {_token: token, id: id},
-                success: function (response) {
-                    alert("Success. Id is: "+response);                             
-                }
-            });
-            $(this).parents().eq(3).remove();
-        });
+        // $('#comments-replies-container').on('click', '.delete-comment', function(e){
+        //     e.preventDefault();
+        //     $(this).off('click');
+        //     var token = $('input[name=_token]').val();
+        //     var id = $(this).parents().eq(2).find('.comment-id').val();
+        //     var comment_id = $(this).parent().eq(3).find('.comment-id-delete').val();            
+        //     $.ajax({
+        //         url: '../post-comment/delete',
+        //         type: "DELETE",
+        //         data: {_token: token, id: id},
+        //         success: function (response) {
+        //             alert("Success. Id is: "+response);                             
+        //         }
+        //     });               
+        //     $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
+        //     $(this).parents().eq(3).remove();
+        // });
+        // $('#comments-replies-container').on('click', '.delete-reply', function(e){
+        //     e.preventDefault();
+        //     $(this).off('click');
+        //     var token = $('input[name=_token]').val();
+        //     var id = $(this).parents().eq(2).find('.reply-id').val();
+        //     $.ajax({
+        //         url: '../post-reply/delete',
+        //         type: "DELETE",
+        //         data: {_token: token, id: id},
+        //         success: function (response) {
+        //             alert("Success. Id is: "+response);                             
+        //         }
+        //     });
+        //     $(this).parents().eq(3).remove();
+        // });
     });
 </script>
