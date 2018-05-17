@@ -1,6 +1,7 @@
 <script>
 $('#comments-replies-container').on('click', '.delete-comment', function(e){
 	e.preventDefault();
+	$(this).off('click');
 	swal({
 		title: "You sure about this?",
 		text: "Deleting this comment will also delete all its replies.",
@@ -23,7 +24,7 @@ $('#comments-replies-container').on('click', '.delete-comment', function(e){
 		                type: "DELETE",
 		                data: {_token: token, id: id},
 		                success: function (response) {
-		                    alert("Success. Id is: "+response);                             
+		                    // alert("Success. Id is: "+response);                             
 		                }
 		            });               
 		            $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
@@ -37,6 +38,7 @@ $('#comments-replies-container').on('click', '.delete-comment', function(e){
 });	
 $('#comments-replies-container').on('click', '.delete-reply', function(e){
 	e.preventDefault();
+	$(this).off('click');
 	swal({
 		title: "You sure about this?",
 		text: "Once deleted, it ain't comin' back.",
@@ -58,7 +60,7 @@ $('#comments-replies-container').on('click', '.delete-reply', function(e){
 	                type: "DELETE",
 	                data: {_token: token, id: id},
 	                success: function (response) {
-	                    alert("Success. Id is: "+response);                             
+	                    // alert("Success. Id is: "+response);                             
 	                }
 		            });
 		            $(this).parents().eq(3).remove();
