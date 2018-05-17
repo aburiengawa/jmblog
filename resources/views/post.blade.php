@@ -54,11 +54,17 @@
             @endauth
             <hr>
             <!-- Comments -->
-            <div id="comments-replies-container">
+            @if($post->comments->isNotEmpty())
+            <div><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#comments-replies-container">
+                View Comments
+            </button></div>
+            @endif 
+            <div id="comments-replies-container" class="collapse">
             {{-- <span id="post_id-holder">{{$post->post_id}}</span> --}}
             @if($post->comments->isNotEmpty())
                 @foreach($post->comments->reverse() as $comment)
                     <div class="media">
+
                         <div class="media-body">
                             <h4 class="media-heading">{{$comment->user->name}}
                                 <small>{{$comment->created_at->diffForHumans()}}</small>
@@ -69,7 +75,7 @@
                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">
                                 <div class="form-group hide-element">
-                                    {!! Form::label('body', 'Content:') !!}
+{{--                                     {!! Form::label('body', 'Content:') !!} --}}
                                     {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                 </div>  
                                     <div class="form-group reply-link">
@@ -85,6 +91,13 @@
                                     </span>
                                 </div>
                             {!! Form::close() !!}
+                              {{-- <div class="collapse" id="navbarToggleExternalContent"> --}}
+{{--     <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div> --}}
+                            
                             {{-- Reply --}}
                             @if($comment->replies->isNotEmpty())
                                 @foreach($comment->replies as $reply)
@@ -100,7 +113,7 @@
                                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                                 <input type="hidden" name="username" value="{{Auth::user()->name}}">      
                                                 <div class="form-group hide-element">
-                                                    {!! Form::label('body', 'Content:') !!}
+                                                    {{-- {!! Form::label('body', 'Content:') !!} --}}
                                                     {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                                 </div>  
                                                 <div class="form-group reply-link">

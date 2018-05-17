@@ -1,0 +1,14 @@
+/*Comments area styles*/
+.hide-element {
+  display: none;
+}
+.reply-link {
+  text-decoration: underline;
+  display: block;
+}
+.reply-link-hidden {
+  display: none;
+}
+.reply-hide, .delete-link {
+  margin-left: 40px;
+}
