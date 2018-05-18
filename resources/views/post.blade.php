@@ -54,6 +54,9 @@
             @endauth
             <hr>
             <!-- Comments -->
+            @if(!Auth::check())
+            <div>You must <a href="{{URL::to('/login')}}">sign in</a> to post comments</div>
+            @endif
             @if($post->comments->isNotEmpty())
             <button class="btn btn-link collapsed show-comment-button" data-toggle="collapse" data-target="#comments-replies-container"><span class="show-hide-comments-span show-comments"></span><i class="icon-arrow fa fa-angle-right"></i></button>
             @endif 
@@ -68,6 +71,7 @@
                         </h4>
                         <input class="comment-id" type="hidden" name="id" value="{{$comment->id}}">
                         <div class="comment-body">{{$comment->body}}</div>
+                        @auth
                         {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                             <input type="hidden" name="comment_id" value="{{$comment->id}}">
                             <input type="hidden" name="username" value="{{Auth::user()->name}}">
@@ -80,9 +84,12 @@
                             <div class="form-group reply-elements hide-element">
                                 {!! Form::submit('Post Reply', ['class'=>'send-reply-to-comment btn btn-primary']) !!}
                                 <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
+                                @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $comment->user->id)
                                 <span class="delete-comment"><a href="#void"><small>DELETE</small></a></span>
+                                @endif
                             </div>
                         {!! Form::close() !!}
+                        @endauth
                         {{-- Reply --}}
                         @if($comment->replies->isNotEmpty())
                             @foreach($comment->replies->reverse() as $reply)
@@ -94,6 +101,7 @@
                                     </h4>
                                     <input class="reply-id" type="hidden" name="id" value="{{$reply->id}}">
                                     <div class="comment-body">{{$reply->body}}</div>
+                                    @auth
                                     {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                         <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                         <input type="hidden" name="username" value="{{Auth::user()->name}}">      
@@ -106,9 +114,12 @@
                                         <div class="form-group hide-element">
                                             {!! Form::submit('Post Reply', ['class'=>'send-reply-to-reply btn btn-primary']) !!}
                                             <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
+                                            @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $reply->user->id)
                                             <span class="delete-reply"><a href="#void"><small>DELETE</small></a></span>
+                                            @endif
                                         </div>
                                     {!! Form::close() !!}
+                                    @endauth
                                 </div> {{-- Reply .media-body --}}
                             </div> {{-- Reply .media --}}
                             @endforeach
@@ -125,8 +136,10 @@
     </div> {{-- .container --}}
 </article>
 <hr>
+@auth
 @include('includes.comments-ajax')
 @include('includes.delete-comment-reply-swal')
+@endauth
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/reply-hide.js')}}"></script>
 <script>
