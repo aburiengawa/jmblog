@@ -9,7 +9,7 @@ $('#comments-replies-container').on('click', '.delete-comment', function(e){
 		buttons: ["No, take me back...", "Yup, I'm sure!"],
 		dangerMode: true,
 	}).then((willDelete) => {
-		if(willDelete) {
+		if (willDelete) {
 			swal({
 				text: "Cool beans, we'll get rid of it then.",
 				icon: "success",
@@ -27,6 +27,7 @@ $('#comments-replies-container').on('click', '.delete-comment', function(e){
 		                    // alert("Success. Id is: "+response);                             
 		                }
 		            });               
+		            alert('clicked');
 		            $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
 		            $(this).parents().eq(3).remove();
 				}

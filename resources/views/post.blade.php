@@ -55,9 +55,9 @@
             <hr>
             <!-- Comments -->
             @if($post->comments->isNotEmpty())
-<<<<<<< HEAD
             <button class="btn btn-link collapsed show-comment-button" data-toggle="collapse" data-target="#comments-replies-container"><span class="show-hide-comments-span show-comments"></span><i class="icon-arrow fa fa-angle-right"></i></button>
             @endif 
+            <div id="ajax-comment-container">
             <div id="comments-replies-container" class="collapse">
             @if($post->comments->isNotEmpty())
                 @foreach($post->comments->reverse() as $comment)
@@ -72,21 +72,20 @@
                             <input type="hidden" name="comment_id" value="{{$comment->id}}">
                             <input type="hidden" name="username" value="{{Auth::user()->name}}">
                             <div class="form-group hide-element">
-{{--                                     {!! Form::label('body', 'Content:') !!} --}}
                             {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                             </div>  
                                 <div class="form-group reply-link">
                                     <a href="#void"><small>REPLY</small></a>
                                 </div>
                             <div class="form-group reply-elements hide-element">
-                                {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
+                                {!! Form::submit('Post Reply', ['class'=>'send-reply-to-comment btn btn-primary']) !!}
                                 <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
                                 <span class="delete-comment"><a href="#void"><small>DELETE</small></a></span>
                             </div>
                         {!! Form::close() !!}
                         {{-- Reply --}}
                         @if($comment->replies->isNotEmpty())
-                            @foreach($comment->replies as $reply)
+                            @foreach($comment->replies->reverse() as $reply)
                             <div class="media ml-5">
                                 <input class="comment-id-delete" type="hidden" value="{{$comment->id}}">
                                 <div class="media-body">
@@ -99,14 +98,13 @@
                                         <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                         <input type="hidden" name="username" value="{{Auth::user()->name}}">      
                                         <div class="form-group hide-element">
-                                            {{-- {!! Form::label('body', 'Content:') !!} --}}
                                             {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                         </div>  
                                         <div class="form-group reply-link">
                                             <a href="#void"><small>REPLY</small></a>
                                         </div>
                                         <div class="form-group hide-element">
-                                            {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
+                                            {!! Form::submit('Post Reply', ['class'=>'send-reply-to-reply btn btn-primary']) !!}
                                             <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
                                             <span class="delete-reply"><a href="#void"><small>DELETE</small></a></span>
                                         </div>
@@ -117,91 +115,10 @@
                         @endif
                     </div> {{-- Comment .media-body --}}
                 </div> {{-- Comment .media --}}
-=======
-            <div><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#comments-replies-container">
-                View Comments
-            </button></div>
-            @endif 
-            <div id="comments-replies-container" class="collapse">
-            {{-- <span id="post_id-holder">{{$post->post_id}}</span> --}}
-            @if($post->comments->isNotEmpty())
-                @foreach($post->comments->reverse() as $comment)
-                    <div class="media">
-
-                        <div class="media-body">
-                            <h4 class="media-heading">{{$comment->user->name}}
-                                <small>{{$comment->created_at->diffForHumans()}}</small>
-                            </h4>
-                            <input class="comment-id" type="hidden" name="id" value="{{$comment->id}}">
-                            <div class="comment-body">{{$comment->body}}</div>
-                            {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
-                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                <input type="hidden" name="username" value="{{Auth::user()->name}}">
-                                <div class="form-group hide-element">
-{{--                                     {!! Form::label('body', 'Content:') !!} --}}
-                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
-                                </div>  
-                                    <div class="form-group reply-link">
-                                        <a href="#void"><small>REPLY</small></a>
-                                    </div>
-                                <div class="form-group reply-elements hide-element">
-                                    {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
-                                    <span class="reply-hide">
-                                        <a href="#void"><small>HIDE</small></a>
-                                    </span>
-                                    <span class="delete-comment">
-                                        <a href="#void"><small>DELETE</small></a>
-                                    </span>
-                                </div>
-                            {!! Form::close() !!}
-                              {{-- <div class="collapse" id="navbarToggleExternalContent"> --}}
-{{--     <div class="bg-dark p-4">
-      <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-  </div> --}}
-                            
-                            {{-- Reply --}}
-                            @if($comment->replies->isNotEmpty())
-                                @foreach($comment->replies as $reply)
-                                    <div class="media ml-5">
-                                        <input class="comment-id-delete" type="hidden" value="{{$comment->id}}">
-                                        <div class="media-body">
-                                            <h4 class="media-heading">{{$reply->user->name}}
-                                                <small>{{$reply->created_at->diffForHumans()}}</small>
-                                            </h4>
-                                            <input class="reply-id" type="hidden" name="id" value="{{$reply->id}}">
-                                            <div class="comment-body">{{$reply->body}}</div>
-                                            {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
-                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                                <input type="hidden" name="username" value="{{Auth::user()->name}}">      
-                                                <div class="form-group hide-element">
-                                                    {{-- {!! Form::label('body', 'Content:') !!} --}}
-                                                    {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
-                                                </div>  
-                                                <div class="form-group reply-link">
-                                                    <a href="#void"><small>REPLY</small></a>
-                                                </div>
-                                                <div class="form-group hide-element">
-                                                    {!! Form::submit('Post Reply', ['class'=>'send-reply btn btn-primary']) !!}
-                                                    <span class="reply-hide">
-                                                        <a href="#void"><small>HIDE</small></a>
-                                                    </span>
-                                                    <span class="delete-reply">
-                                                        <a href="#void"><small>DELETE</small></a>
-                                                    </span>
-                                                </div>
-                                            {!! Form::close() !!}
-                                        </div> {{-- Reply .media-body --}}
-                                    </div> {{-- Reply .media --}}
-                                @endforeach
-                            @endif
-                        </div> {{-- Comment .media-body --}}
-                    </div> {{-- Comment .media --}}
->>>>>>> master
                 @endforeach
             @endif
-            </div> {{-- comments-replies-container --}}
+            </div> {{-- #comments-replies-container --}}
+            </div> {{-- #ajax-comment-container --}}
             {{-- end of comments --}}
             </div> {{-- .col-lg-8 col-md-10 mx-auto --}}
         </div> {{-- .row --}}
