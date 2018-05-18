@@ -8865,18 +8865,20 @@ fieldset[disabled] .btn-primary:hover {
   text-transform: uppercase;
   text-decoration: underline;
 }
-/* Collapsing comments */
-.show-comment-button {
+/* Collapsing comments section button*/
+#show-hide-comments-button {
   padding-left: 0;
   padding-right: 0;
-  text-decoration: underline;
-}
-.show-comments:after {
-  content: "Show Comments";
-}
-.hide-comments:after {
-  content: "Hide Comments";
+  text-decoration: none;
 }
 .show-hide-comments-span {
   padding-right: 5px;
+  text-decoration: underline;
 }
+#show-hide-comments-button span.show-content {display: inline;}
+#show-hide-comments-button:not(.collapsed) span.show-content{display: none;}
+#show-hide-comments-button.collapsed span.hide-content{display: none;}
+
+#show-hide-comments-button i.icon-arrow-show {display: inline;}
+#show-hide-comments-button:not(.collapsed) i.icon-arrow-show{display: none;}
+#show-hide-comments-button.collapsed i.icon-arrow-hide{display: none;}

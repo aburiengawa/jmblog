@@ -58,7 +58,7 @@
             <div>You must <a href="{{URL::to('/login')}}">sign in</a> to post comments</div>
             @endif
             @if($post->comments->isNotEmpty())
-            <button class="btn btn-link collapsed show-comment-button" data-toggle="collapse" data-target="#comments-replies-container"><span class="show-hide-comments-span show-comments"></span><i class="icon-arrow fa fa-angle-right"></i></button>
+            <button id="show-hide-comments-button"  class="btn btn-link collapsed" data-toggle="collapse" data-target="#comments-replies-container"><span class="show-hide-comments-span show-content">Show Comments</span><span class="show-hide-comments-span hide-content">Hide Comments</span><i class="icon-arrow-show fa fa-angle-right"></i><i class="icon-arrow-hide fa fa-angle-down"></i></button>
             @endif 
             <div id="ajax-comment-container">
             <div id="comments-replies-container" class="collapse">
@@ -140,14 +140,7 @@
 @include('includes.comments-ajax')
 @include('includes.delete-comment-reply-swal')
 @endauth
+{{-- @include('includes.show-comment-button') --}}
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/reply-hide.js')}}"></script>
-<script>
-    $('.show-comment-button').on('click', function(){
-        $('.show-hide-comments-span').toggleClass('show-comments');
-        $('.show-hide-comments-span').toggleClass('hide-comments');        
-        $('.icon-arrow').toggleClass('fa-angle-right');
-        $('.icon-arrow').toggleClass('fa-angle-down');
-    });
-</script>
 @endsection
