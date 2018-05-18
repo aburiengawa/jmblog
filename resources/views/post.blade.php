@@ -139,8 +139,7 @@
 @auth
 @include('includes.comments-ajax')
 @include('includes.delete-comment-reply-swal')
-@endauth
-{{-- @include('includes.show-comment-button') --}}
-<script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/reply-hide.js')}}"></script>
+@endauth
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
 @endsection
