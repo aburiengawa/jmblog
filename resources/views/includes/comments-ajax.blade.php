@@ -40,7 +40,7 @@
             }          
         });
 //reply to comment        
-        $('#comments-replies-container').on('click', '.send-reply-to-comment', function(e){
+        $('#ajax-comment-container').on('click', '.send-reply-to-comment', function(e){
             // Remove whitespace for validation
             var bodyContent = $(this).parent().parent().find('textarea[name=body]').val().trim();
             if (bodyContent.length !== 0) {
@@ -73,7 +73,7 @@
             }
         });
 //reply to reply  
-        $('#comments-replies-container').on('click', '.send-reply-to-reply', function(e){
+        $('#ajax-comment-container').on('click', '.send-reply-to-reply', function(e){
             // Remove whitespace for validation
             var bodyContent = $(this).parent().parent().find('textarea[name=body]').val().trim();
             if (bodyContent.length !== 0) {

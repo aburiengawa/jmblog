@@ -8,17 +8,21 @@ use Illuminate\Http\Request;
 
 class AdminCommentsController extends Controller
 {
-    public function index() 
+    public function __construct()
+    {
+        $this->middleware('custom.auth');
+    }
+    public function index()
     {
     	if (auth()->user()->role_id === 1) {
             $comments = Comment::orderBy('created_at', 'desc')->paginate(10);
             return view('admin.comments.index', compact('comments'));
         }
-        if(auth()->user()->role_id === 2) {
+        if(auth()->user()->role_id === 2 || auth()->user()->role_id === 3) {
             $userId = auth()->user()->id;
             $comments = Comment::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->paginate(10);
             return view('admin.comments.index', compact('comments'));
-        }
+        }     
     }
     public function store(Request $request) 
     {

@@ -1,10 +1,10 @@
 (function() {
-    $('#comments-replies-container').on('click', '.reply-link', function(){
+    $('#ajax-comment-container').on('click', '.reply-link', function(){
         this.previousElementSibling.classList.toggle("hide-element");
         this.nextElementSibling.classList.toggle("hide-element");
         this.classList.toggle("reply-link-hidden");
     });
-    $('#comments-replies-container').on('click', '.reply-hide', function(){
+    $('#ajax-comment-container').on('click', '.reply-hide', function(){
         this.parentElement.classList.toggle("hide-element");
         this.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hide-element");
         this.parentElement.previousElementSibling.classList.toggle("reply-link-hidden");

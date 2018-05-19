@@ -113,6 +113,9 @@
                 <li>
                     <a href="/comments/index"><i class="fa fa-wrench fa-fw"></i> Comments<span class="fa arrow"></span></a>
                 </li>
+                <li>
+                    <a href="/replies/index"><i class="fa fa-wrench fa-fw"></i> Replies<span class="fa arrow"></span></a>
+                </li>
                 @if (auth()->user()->role_id !== 3)    
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>

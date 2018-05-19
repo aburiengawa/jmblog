@@ -1,5 +1,5 @@
 <script>
-$('#comments-replies-container').on('click', '.delete-comment', function(e){
+$('#ajax-comment-container').on('click', '.delete-comment', function(e){
 	e.preventDefault();
 	$(this).off('click');
 	swal({
@@ -37,7 +37,7 @@ $('#comments-replies-container').on('click', '.delete-comment', function(e){
 		}
 	});
 });	
-$('#comments-replies-container').on('click', '.delete-reply', function(e){
+$('#ajax-comment-container').on('click', '.delete-reply', function(e){
 	e.preventDefault();
 	$(this).off('click');
 	swal({

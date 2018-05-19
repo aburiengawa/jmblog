@@ -24,7 +24,11 @@
 			<td><a href="/posts/edit/{{ $post->id }}">{{$post->title}}</a></td>
 			<td>{!!str_limit($post->body, 20)!!}</td>
 			<td><a href="/post/{{ $post->id }}">View Post</a></td>
-			<td><a href="">View Comments</a></td>
+			@if($post->comments->count())
+			<td><a href="">View Comments ({{$post->comments->count()}})</a></td>
+			@else
+			<td>No replies</td>
+			@endif
 			<td>{{$post->created_at->diffForHumans()}}</td>
 			<td>{{$post->updated_at->diffForHumans()}}</td>
 		</tr>

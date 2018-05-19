@@ -34,6 +34,7 @@ Route::post('comments/create', 'AdminCommentsController@store');
 Route::delete('post-comment/delete', 'PostsController@destroyComment');
 //Admin comment replies
 Route::get('replies/index', 'AdminRepliesController@index');
+Route::get('/comment/replies/{id}', 'AdminRepliesController@show');
 Route::get('replies/edit/{reply}', 'AdminRepliesController@edit');
 Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
 Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');

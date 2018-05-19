@@ -33,10 +33,10 @@ class PostsController extends Controller
         $id = $request->id;
         $comment = Comment::findOrFail($id);
         $role_id = auth()->user()->role_id;
-        if ($role_id === 1 || $role_id === 2) {
+        if ($role_id === 1) {
             $comment->delete();
             return "Comment delete success";
-        } else if ($role_id === 3) {
+        } else if ($role_id === 2 || $role_id === 3) {
             auth()->user()->comments()->whereId($id)->first()->delete();
             return "Comment delete success";
         } else {
@@ -48,10 +48,10 @@ class PostsController extends Controller
         $id = $request->id;
         $reply = Reply::findOrFail($id);
         $role_id = auth()->user()->role_id;
-        if ($role_id === 1 || $role_id === 2) {
+        if ($role_id === 1) {
             $reply->delete();
             return "Reply delete success";
-        } else if ($role_id === 3) {
+        } else if ($role_id === 2 || $role_id === 3) {
             auth()->user()->replies()->whereId($id)->first()->delete();
             return "Reply delete success";
         } else {

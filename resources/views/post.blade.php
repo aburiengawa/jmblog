@@ -19,7 +19,7 @@
     </div>
 </header>
 @include('includes.messages')
-    <!-- Post Content -->
+<!-- Post Content -->
 <article>
     <div class="container">
         <div class="row">
@@ -35,7 +35,7 @@
             {!! $post->body !!}
             <hr>
             <!-- Blog Comments -->
-            <!-- Comments Form -->
+            <!-- Comment Form -->
             @auth
                 <div class="well">
                     <h4>Leave a Comment:</h4>
@@ -53,7 +53,8 @@
                 </div> <!-- .well -->
             @endauth
             <hr>
-            <!-- Comments -->
+            <!-- Comment Form End-->
+            <!-- Comments Section -->
             @if(!Auth::check())
             <div>You must <a href="{{URL::to('/login')}}">sign in</a> to post comments</div>
             @endif
@@ -84,7 +85,7 @@
                             <div class="form-group reply-elements hide-element">
                                 {!! Form::submit('Post Reply', ['class'=>'send-reply-to-comment btn btn-primary']) !!}
                                 <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
-                                @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $comment->user->id)
+                                @if(Auth::user()->role_id === 1 || Auth::user()->id === $comment->user->id)
                                 <span class="delete-comment"><a href="#void"><small>DELETE</small></a></span>
                                 @endif
                             </div>
@@ -114,7 +115,7 @@
                                         <div class="form-group hide-element">
                                             {!! Form::submit('Post Reply', ['class'=>'send-reply-to-reply btn btn-primary']) !!}
                                             <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
-                                            @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 2 || Auth::user()->id === $reply->user->id)
+                                            @if(Auth::user()->role_id === 1 || Auth::user()->id === $reply->user->id)
                                             <span class="delete-reply"><a href="#void"><small>DELETE</small></a></span>
                                             @endif
                                         </div>
