@@ -25,7 +25,7 @@
 			<td>{!!str_limit($post->body, 20)!!}</td>
 			<td><a href="/post/{{ $post->id }}">View Post</a></td>
 			@if($post->comments->count())
-			<td><a href="">View Comments ({{$post->comments->count()}})</a></td>
+			<td><a href="/post/comments/{{ $post->id }}">View Comments ({{$post->comments->count()}})</a></td>
 			@else
 			<td>No replies</td>
 			@endif

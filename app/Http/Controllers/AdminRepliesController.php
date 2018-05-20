@@ -43,7 +43,7 @@ class AdminRepliesController extends Controller
             return ("Uh oh");
         }
     }
-    public function show($id)
+    public function showCommentReplies($id)
     {
         $comment = Comment::findOrFail($id);
         $replies = $comment->replies()->orderBy('created_at', 'desc')->paginate(10);

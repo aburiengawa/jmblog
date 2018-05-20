@@ -24,6 +24,7 @@ Route::get('/post/{post}', 'PostsController@show');
 Route::get('/getcomments', 'PostsController@getcomments');
 //Admin comments routes
 Route::get('comments/index', 'AdminCommentsController@index');
+Route::get('/post/comments/{id}', 'AdminCommentsController@showPostComments');
 // Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');
 Route::get('comments/edit/{comment}', 'AdminCommentsController@edit');
 Route::patch('comments/edit/{comment}', 'AdminCommentsController@update');
@@ -34,7 +35,7 @@ Route::post('comments/create', 'AdminCommentsController@store');
 Route::delete('post-comment/delete', 'PostsController@destroyComment');
 //Admin comment replies
 Route::get('replies/index', 'AdminRepliesController@index');
-Route::get('/comment/replies/{id}', 'AdminRepliesController@show');
+Route::get('/comment/replies/{id}', 'AdminRepliesController@showCommentReplies');
 Route::get('replies/edit/{reply}', 'AdminRepliesController@edit');
 Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
 Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');

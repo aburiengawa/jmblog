@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Comment;
 // use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -23,6 +24,11 @@ class AdminCommentsController extends Controller
             $comments = Comment::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->paginate(10);
             return view('admin.comments.index', compact('comments'));
         }     
+    }
+    public function showPostComments($id) {
+        $post = Post::findOrFail($id);
+        $comments = $post->comments()->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.comments.show-post-comments', compact('comments'));
     }
     public function store(Request $request) 
     {
