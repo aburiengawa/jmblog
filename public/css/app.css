@@ -8493,6 +8493,10 @@ body {
     color: white;
   }
 
+  #mainNav .navbar-nav > li.nav-item > .sidebar-module {
+    color: white;
+  }
+
   #mainNav .navbar-nav > li.nav-item > a:focus,
   #mainNav .navbar-nav > li.nav-item > a:hover {
     color: rgba(255, 255, 255, 0.8);
@@ -8882,3 +8886,11 @@ fieldset[disabled] .btn-primary:hover {
 #show-hide-comments-button i.icon-arrow-show {display: inline;}
 #show-hide-comments-button:not(.collapsed) i.icon-arrow-show{display: none;}
 #show-hide-comments-button.collapsed i.icon-arrow-hide{display: none;}
+
+#search-input {
+  background-color: rgba(1, 1, 1, 0.2);
+  border: none;
+  margin-right: 10px;
+  margin-top: 8px;
+  border-radius: 5px;
+}

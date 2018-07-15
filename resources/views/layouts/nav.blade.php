@@ -16,7 +16,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
-                </li>             
+                </li>        
+                <li class="nav-item">
+                    <div class="sidebar-module input-group">
+                        <form action="/search/" method="GET">
+                            <input id="search-input" type="text" name="s" value="{{ Request::query('s') }}" placeholder="" /><span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                        </form>
+                    </div>
+                </li>
             </ul>
         @if (Route::has('login'))
             <ul class="navbar-nav float-right">

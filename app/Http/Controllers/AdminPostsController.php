@@ -18,36 +18,41 @@ class AdminPostsController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate(request(), [
-        	'title' => 'required|max:100',
-            'subheading' => 'max:100',
-        	'body' 	=> 'required'
-        ]);
-        $input = $request->all(); 
+        if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2) {
+            $this->validate(request(), [
+            	'title' => 'required|max:100',
+                'subheading' => 'max:100',
+            	'body' 	=> 'required'
+            ]);
+            $input = $request->all(); 
 
-        if($file = $request->file('photo')) {
-            $name = $file->getClientOriginalName();
-            $file->move('photos/shares', $name);
-            $photo = Photo::create(['file'=>$name]);
-            $input['photo_id'] = $photo->id;
+            if($file = $request->file('photo')) {
+                $name = $file->getClientOriginalName();
+                $file->move('photos/shares', $name);
+                $photo = Photo::create(['file'=>$name]);
+                $input['photo_id'] = $photo->id;
+            }
+
+            $post = new Post;
+            $post->user_id = auth()->user()->id;
+            $post->title = $request->title;
+            $post->subheading = $request->subheading;
+            $post->category_id = $request->category_id;
+            $post->body = $request->body;
+
+            if($request->file('photo')){
+                $post->photo_id = $input['photo_id'];
+            }
+
+            $post->save();
+            $post->tags()->sync($request->tags, false);
+            // auth()->user()->posts()->create($input);
+            // session()->flash('message', 'Your post has now been published');
+            return redirect('/admin')->withInfo('Your post has been published');
+        } else {
+            return redirect('/')->withError('You are not authorized to create posts.');
         }
 
-        $post = new Post;
-        $post->user_id = auth()->user()->id;
-        $post->title = $request->title;
-        $post->subheading = $request->subheading;
-        $post->category_id = $request->category_id;
-        $post->body = $request->body;
-
-        if($request->file('photo')){
-            $post->photo_id = $input['photo_id'];
-        }
-
-        $post->save();
-        $post->tags()->sync($request->tags, false);
-        // auth()->user()->posts()->create($input);
-        // session()->flash('message', 'Your post has now been published');
-        return redirect('/admin')->withInfo('Your post has been published');
     }
     public function index() 
     {
