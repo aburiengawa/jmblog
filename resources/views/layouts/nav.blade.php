@@ -20,7 +20,10 @@
                 <li class="nav-item">
                     <div class="sidebar-module input-group">
                         <form action="/search/" method="GET">
-                            <input id="search-input" type="text" name="s" value="{{ Request::query('s') }}" placeholder="" /><span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <input id="search-input" class="form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary search-button" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
                         </form>
                     </div>
                 </li>
