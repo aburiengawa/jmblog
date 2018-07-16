@@ -8888,21 +8888,30 @@ fieldset[disabled] .btn-primary:hover {
   background-color: rgba(1, 1, 1, 0.2);
   border: none;
   margin-top: 8px;
+  color: white;
 }
 
 .search-button {
-    color: black;
-    background-color: white;
+    /*color: black;*/
+    color: white;
+    background-color: rgba(1, 1, 1, 0.2);
+    /*background-color: white;*/
     padding: 6px 12px;
     margin: 8px 0 0 0;
     border-color: none !important;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
-  .search-button:hover {
-    color: white;
-  }
-
-  .is-visible .search-button {
-  background-color: #333;
-  }
+.search-button:hover {
+  color: black;
+  background-color: white;    
+  /*color: white;*/
+}
+.is-visible #search-input {
+  color: black;
+}
+.is-visible .search-button {
+  color: black;
+  /*background-color: #333;*/
+  background-color: rgba(1, 1, 1, 0.2);
+}

@@ -12,6 +12,8 @@
 */
 //Home page
 Route::get('/', 'PostsController@index');
+// Search
+Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 //Admin post routes
 Route::get('/posts/create', 'AdminPostsController@create');
 Route::get('posts/edit/{post}', 'AdminPostsController@edit');
