@@ -26,7 +26,7 @@ class PostsController extends Controller
     {
     	$category = Category::findOrFail($id);
     	$posts = Post::whereIn('category_id', $category)->orderBy('created_at', 'desc')->simplePaginate(5);
-    	return view('categories.index', compact('category', 'posts'));
+    	return view('category.index', compact('category', 'posts'));
     }
     public function destroyComment(Request $request)
     {

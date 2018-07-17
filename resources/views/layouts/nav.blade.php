@@ -49,17 +49,17 @@
                 </li>  
                 <li class="nav-item">                        
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
-                </li>
+                </li>            
+            @endauth
                 <li class="nav-item">                        
                     <a class="nav-link" href="{{ url('/categories') }}">Categories</a>
-                </li>                
-            @endauth
+                </li>    
                 <li class="nav-item">
                     <div class="sidebar-module input-group">
                         <form action="/search/" method="GET">
                             <input id="search-input" class="form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="" />
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary search-button" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <button class="btn btn-outline-secondary search-button" type="submit" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </div>
                         </form>
                     </div>

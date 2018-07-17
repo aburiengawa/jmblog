@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Categories</h1>
+              <h1>Category: {{ $category->name }}</h1>
             </div>
           </div>
         </div>
@@ -18,21 +18,20 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           
-          @foreach($categories as $category)
+          @foreach($posts as $post)
           <div class="post-preview">
-            {{-- <a href="{{url('/')}}/post/{{ $category->post->id }}"> --}}
+            <a href="{{url('/')}}/post/{{ $post->id }}">
               <h2 class="post-title">
-                <a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name}}</a>
+                {{ $post->title}}
               </h2>
-              <p><i>Number of posts: </i><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->posts->count() }}</a></p>
-              {{-- <h3 class="post-subtitle"> --}}
-                {{-- {!! substr($post->body, 0, 30) !!} ... --}}
+              <h3 class="post-subtitle">
+                {!! substr($post->body, 0, 30) !!} ...
                 {{-- {{ $post->body }} --}}
-              {{-- </h3> --}}
-            {{-- </a> --}}
-{{--             <p class="post-meta">Posted by
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
               <a href="#">{{ $post->user->name }}</a>
-              on {{ $post->created_at->toFormattedDateString() }}</p> --}}
+              on {{ $post->created_at->toFormattedDateString() }}</p>
           </div>
           
           <hr>
@@ -80,11 +79,11 @@
           <!-- Pager -->
           <div class="clearfix">
             {{-- {{ $posts->links() }} --}}
-            @if($categories->previousPageUrl())
-            <a class="btn btn-secondary float-left" href="{{ $categories->previousPageUrl() }}">&larr; Newer Posts</a>
+            @if($posts->previousPageUrl())
+            <a class="btn btn-secondary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Newer Posts</a>
             @endif
-            @if($categories->nextPageUrl())
-            <a class="btn btn-secondary float-right" href="{{ $categories->nextPageUrl() }}">Older Posts &rarr;</a>
+            @if($posts->nextPageUrl())
+            <a class="btn btn-secondary float-right" href="{{ $posts->nextPageUrl() }}">Older Posts &rarr;</a>
             @endif
           </div>
         </div>

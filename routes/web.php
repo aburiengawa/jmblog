@@ -14,6 +14,7 @@
 Route::get('/', 'PostsController@index');
 //Categories
 Route::get('/categories', 'CategoriesController@index');
+Route::get('/category/{id}', 'CategoriesController@categoryIndex');
 // Search
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 //Admin post routes
