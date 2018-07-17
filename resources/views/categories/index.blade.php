@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('content')
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
       <div class="container">
@@ -92,3 +92,4 @@
     </div>
 
     <hr>
+@endsection
