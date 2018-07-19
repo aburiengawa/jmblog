@@ -11,7 +11,7 @@
                     <a href="#"> {{ $post->user->name }} </a>
                     on {{ $post->created_at->toFormattedDateString() }} 
                     @if($post->category)
-                    under <a href="">{{$post->category->name}}</a></span>
+                    under <a href="{{ url('/') }}/category/{{ $post->category->id }}">{{$post->category->name}}</a></span>
                     @endif
                 </div>
             </div>
@@ -27,8 +27,8 @@
             @if($post->tags->isNotEmpty())
                 Tags: 
                 @foreach($post->tags as $tag)
-                    <span class="label label-default">
-                        {{$tag->name}}
+                    <span class="label label-default tag-link">
+                        <a href="{{ url('/') }}/tag/{{ $tag->id }}">{{$tag->name}}</a>
                     </span>
                 @endforeach
             @endif
