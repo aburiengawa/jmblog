@@ -19,6 +19,6 @@ class CategoriesController extends Controller
 		// 		->orWhere('body', 'like', "%$s%")
 		// 		->paginate(5);
 		// dd($posts);
-		return view('category.index', compact('category', 'posts'));
+		return view('categories.category.index', compact('category', 'posts'));
 	}		
 }
