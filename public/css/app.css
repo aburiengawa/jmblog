@@ -8918,3 +8918,7 @@ fieldset[disabled] .btn-primary:hover {
 
 .tag-link {margin-left: 3px;}
 .tag-link a { color: white; }
+
+span.underline { text-decoration: underline; }
+
+body#tinymce.mce-content-body span.underline { text-decoration: underline; }
