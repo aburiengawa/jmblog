@@ -5281,9 +5281,15 @@ tbody.collapse.in {
   clear: both;
 }
 
+@media (max-width: 768px) {
+  ul.navbar-nav.float-right {
+    float: left !important;
+  }
+}
+
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    /*border-radius: 4px;*/
   }
 }
 
@@ -5336,7 +5342,7 @@ tbody.collapse.in {
   }
 
   .navbar-collapse.collapse {
-    display: block !important;
+    /*display: block !important;*/
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
