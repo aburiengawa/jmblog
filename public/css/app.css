@@ -5284,7 +5284,11 @@ tbody.collapse.in {
 @media (max-width: 768px) {
   ul.navbar-nav.float-right {
     float: left !important;
+    margin-top: 0;
   }
+  ul.navbar-nav.float-right > li:first-child > a{
+    padding-top: 0;
+  }  
 }
 
 @media (min-width: 768px) {
@@ -8928,3 +8932,9 @@ fieldset[disabled] .btn-primary:hover {
 span.underline { text-decoration: underline; }
 
 body#tinymce.mce-content-body span.underline { text-decoration: underline; }
+
+@media (max-width: 590px) {
+  ul.navbar-nav {
+    margin-left: 0;
+  }
+}

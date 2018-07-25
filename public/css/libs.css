@@ -5,7 +5,8 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*padding-top: 70px; */
 }
 
 footer {
@@ -8353,6 +8354,7 @@ body {
 }
 
 #page-wrapper {
+    overflow: auto;
     padding: 0 15px;
     min-height: 568px;
     background-color: #fff;
@@ -8421,7 +8423,7 @@ body {
 }
 
 .navbar-top-links .dropdown-user {
-    right: 0;
+    /*right: 0;*/
     left: auto;
 }
 
