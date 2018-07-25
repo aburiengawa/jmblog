@@ -1,34 +1,24 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
+    <div class="container navbar-container">
         <a class="navbar-brand d-flex mr-auto" href="index.html">Start Bootstrap</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
         </button>
         <div class="navbar-collapse collapse" id="navbarResponsive">
+            <div class="ul-wrapper">
             <ul class="navbar-nav">
-                <li class="nav-item">
+{{--                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>        
-{{--                 <li class="nav-item">
-                    <div class="sidebar-module input-group">
-                        <form action="/search/" method="GET">
-                            <input id="search-input" class="form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="" />
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary search-button" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </li> --}}
             </ul>
-        @if (Route::has('login'))
             <ul class="navbar-nav float-right">
             @auth
                 @if (Auth::user()->role_id !== 3)
@@ -65,7 +55,7 @@
                     </div>
                 </li>
             </ul>
-        @endif
+            </div> {{-- ul-wrapper --}}
         </div> {{-- .navbar-collapse --}}
     </div> {{-- .container --}}
 </nav>

@@ -8902,10 +8902,8 @@ fieldset[disabled] .btn-primary:hover {
 }
 
 .search-button {
-    /*color: black;*/
     color: white;
     background-color: rgba(1, 1, 1, 0.2);
-    /*background-color: white;*/
     padding: 6px 12px;
     margin: 8px 0 0 0;
     border-color: none !important;
@@ -8915,14 +8913,12 @@ fieldset[disabled] .btn-primary:hover {
 .search-button:hover {
   color: black;
   background-color: white;    
-  /*color: white;*/
 }
 .is-visible #search-input {
   color: black;
 }
 .is-visible .search-button {
   color: black;
-  /*background-color: #333;*/
   background-color: rgba(1, 1, 1, 0.2);
 }
 
@@ -8938,3 +8934,11 @@ body#tinymce.mce-content-body span.underline { text-decoration: underline; }
     margin-left: 0;
   }
 }
+@media (max-width: 1200px) {
+  .navbar-container { 
+    max-width: 1170px !important; 
+    width: 1170px !important;
+  }
+}
+
+.ul-wrapper { display: block !important; }
