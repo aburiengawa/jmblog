@@ -5281,7 +5281,8 @@ tbody.collapse.in {
   clear: both;
 }
 
-@media (max-width: 768px) {
+/*Custom CSS*/
+@media (max-width: 767px) {
   ul.navbar-nav.float-right {
     float: left !important;
     margin-top: 0;
@@ -5290,6 +5291,7 @@ tbody.collapse.in {
     padding-top: 0;
   }  
 }
+/*----------------*/
 
 @media (min-width: 768px) {
   .navbar {
@@ -8934,11 +8936,14 @@ body#tinymce.mce-content-body span.underline { text-decoration: underline; }
     margin-left: 0;
   }
 }
-@media (max-width: 1200px) {
-  .navbar-container { 
-    max-width: 1170px !important; 
-    width: 1170px !important;
+/*Prevents navbar-collapse from being open by default when screen is less than 992px*/
+@media (min-width: 992px) {
+  .navbar-collapse.collapse {
+    display: block !important;
+  }  
+}
+@media (max-width: 780px) {
+  .navbar-collapse.collapse > ul:nth-child(2) {
+    padding-right: 8px;
   }
 }
-
-.ul-wrapper { display: block !important; }

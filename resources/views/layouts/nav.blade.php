@@ -7,7 +7,7 @@
             <i class="fa fa-bars"></i>
         </button>
         <div class="navbar-collapse collapse" id="navbarResponsive">
-            <div class="ul-wrapper">
+            {{-- <div class="ul-wrapper"> --}}
             <ul class="navbar-nav">
 {{--                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
@@ -55,7 +55,7 @@
                     </div>
                 </li>
             </ul>
-            </div> {{-- ul-wrapper --}}
+            {{-- </div> --}} {{-- ul-wrapper --}}
         </div> {{-- .navbar-collapse --}}
     </div> {{-- .container --}}
 </nav>
