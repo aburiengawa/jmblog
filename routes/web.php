@@ -92,4 +92,8 @@ Route::delete('admin/tags', 'AdminTagsController@destroy');
 Route::get('/verify/token/{token}', 'Auth\VerificationController@verify')->name('auth.verify'); 
 Route::get('/verify/resend', 'Auth\VerificationController@resend')->name('auth.verify.resend');
 
+Route::get('about', function() {
+	return view('about');
+});
+
 Route::get('/logout', 'AdminController@destroy');
