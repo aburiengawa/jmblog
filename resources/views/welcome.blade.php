@@ -28,9 +28,16 @@
           <div class="post-preview">
             <a href="post/{{ $post->id }}">
               <h2 class="post-title">{{ $post->title}}</h2>
-              <h3 class="post-subtitle">{!! str_limit($post->body, 10) !!}</h3>
+              <h3 class="post-subtitle">{!! str_limit($post->body, 50) !!}</h3>
             </a>
             <p class="post-meta">Posted by <a href="#">{{ $post->user->name }}</a> on {{ $post->created_at->toFormattedDateString() }}</p>
+            @if($post->tags->isNotEmpty())
+                @foreach($post->tags as $tag)
+                    <span class="label label-default tag-link">
+                        <a href="{{ url('/') }}/tag/{{ $tag->id }}">{{$tag->name}}</a>
+                    </span>
+                @endforeach
+            @endif
           </div> 
           <hr>
           @endforeach
