@@ -31737,3 +31737,15 @@ module.exports = function spread(callback) {
 
 /***/ })
 /******/ ]);
+
+// adds focus to search button when search input is on focus
+function searchBarFocus() {
+  let input = document.getElementById('search-input');
+  let button = document.getElementById('button-addon2');
+  input.onfocus = function(){ 
+      button.classList.add('button-focus');
+  };
+  input.onfocusout = function(){ 
+      button.classList.remove('button-focus');
+  }; 
+}

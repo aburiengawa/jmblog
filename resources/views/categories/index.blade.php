@@ -24,7 +24,7 @@
               <h2 class="post-title">
                 <a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name}}</a>
               </h2>
-              <p><i>Posts: </i><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->posts->count() }}</a></p>
+              <p class="post-meta"><i>Posts: </i><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->posts->count() }}</a></p>
               {{-- <h3 class="post-subtitle"> --}}
                 {{-- {!! substr($post->body, 0, 30) !!} ... --}}
                 {{-- {{ $post->body }} --}}
