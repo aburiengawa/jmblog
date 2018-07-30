@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> --}}
 </head>
-<body>
+<body class="login-register">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

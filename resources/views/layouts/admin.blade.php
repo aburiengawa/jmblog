@@ -82,7 +82,7 @@
                     </li>
                 @if (auth()->user()->role_id === 1)
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i>Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="/users/index">All Users</a>
@@ -98,7 +98,7 @@
                 @endif
                 @if (auth()->user()->role_id !== 3)
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="/posts/index">All Posts</a>
@@ -111,41 +111,41 @@
                     </li>
                 @endif
                 <li>
-                    <a href="/comments/index"><i class="fa fa-wrench fa-fw"></i> Comments<span class="fa arrow"></span></a>
+                    <a href="/comments/index"><i class="fa fa-comments fa-fw"></i> Comments</a>
                 </li>
                 <li>
-                    <a href="/replies/index"><i class="fa fa-wrench fa-fw"></i> Replies<span class="fa arrow"></span></a>
+                    <a href="/replies/index"><i class="fa fa-reply-all fa-fw"></i> Replies</a>
                 </li>
                 @if (auth()->user()->role_id !== 3)    
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+                        <a href="/admin/categories"><i class="fa fa-list fa-fw"></i> Categories</a>
+{{--                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="/admin/categories">All Categories</a>
                             </li>
                             <li>
                                 <a href="/admin/categories/create">Create Category</a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <!-- /.nav-second-level -->
                     </li>                    
                 @endif
                 @if (auth()->user()->role_id !== 3)
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Tags<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+                        <a href="/admin/tags"><i class="fa fa-tags fa-fw"></i> Tags</a>
+{{--                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="/admin/tags">All Tags</a>
                             </li>
                             <li>
                                 <a href="/admin/tags/create">Create Tag</a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <!-- /.nav-second-level -->
                     </li>
                 @endif
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="/media">All Media</a>

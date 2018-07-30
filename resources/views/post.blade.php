@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
             @if($post->tags->isNotEmpty())
-                Tags: 
+                <span class="tag-style">Tags: </span>
                 @foreach($post->tags as $tag)
                     <span class="label label-default tag-link">
                         <a href="{{ url('/') }}/tag/{{ $tag->id }}">{{$tag->name}}</a>
