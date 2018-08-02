@@ -49,8 +49,17 @@ class AdminRepliesController extends Controller
         $replies = $comment->replies()->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.comments.replies.show-comment-replies', compact('replies'));
     }
+    public function edit($id)
+    {
+        $reply = Reply::findOrFail($id);
+        return view('admin.comments.replies.edit', compact('reply'));
+    }
+    public function update($id)
+    {
+        return "Update works";
+    }
     public function destroy($id)
     {
-        
+        return "You destroyed me! Not!";
     }
 }

@@ -50,6 +50,18 @@ class AdminCommentsController extends Controller
     {
         return view('admin.comments.edit', compact('comment'));
     }
+    public function update(Request $request, $id)
+    {
+        $this->validate(request(), [
+            'body'  => 'required'
+        ]);
+
+        $comment = Comment::findOrFail($id);
+        $comment->body = $request->body;
+        $comment->update();
+
+        return redirect('/admin')->withInfo('Your comment has been updated');
+    }
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);

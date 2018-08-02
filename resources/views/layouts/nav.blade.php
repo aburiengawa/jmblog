@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{{ url('/about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="https://jmotaylor.com#contact-block">Contact</a>
                 </li>        
             </ul>
             <ul class="navbar-nav float-right">

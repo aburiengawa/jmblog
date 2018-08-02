@@ -3,19 +3,19 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('content')
-<h1>Edit Comment</h1>
+<h1>Edit Repy</h1>
 <div class="row">
 	<div class="col-sm-9">
-	{!! Form::model($comment, ['route' => ['comment-update', $comment->id], 'method' => 'PATCH']) !!}
+	{!! Form::model($reply, ['route' => ['update', $reply->id], 'method' => 'PATCH', 'files'=>true]) !!}
 		<div class="form-group">
 			{!! Form::label('body', 'Content:') !!}
 			{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 		</div>	
 		<div class="form-group">
-			{!! Form::submit('Update Comment', ['class'=>'btn btn-primary col-sm-6']) !!}
+			{!! Form::submit('Update Reply', ['class'=>'btn btn-primary col-sm-6']) !!}
 		</div>
 	{!! Form::close() !!}
-	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminCommentsController@destroy', $comment->id], 'id' => 'delete_form']) !!}
+	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminRepliesController@destroy', $reply->id], 'id' => 'delete_form']) !!}
 		<div class="form-group">
 			<input type="submit" id="submit_delete" class="btn btn-danger col-sm-6" value="Delete Post" disabled="disabled"/>
 		</div>

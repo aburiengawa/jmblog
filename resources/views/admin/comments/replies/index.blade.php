@@ -20,7 +20,7 @@
 			@if(Auth::user()->role_id === 1)
 			<td>{{$reply->user->name}}</td>
 			@endif
-			<td><a href="/comments/edit/{{ $reply->id }}">{!!str_limit($reply->body, 20)!!}</a></td>
+			<td><a href="/replies/edit/{{ $reply->id }}">{!!str_limit($reply->body, 20)!!}</a></td>
 			<td><a href="/post/{{ $reply->comment->post->id }}">{{$reply->comment->post->title}}</a></td>
 			<td>{{$reply->created_at->diffForHumans()}}</td>
 			<td>{{$reply->updated_at->diffForHumans()}}</td>
