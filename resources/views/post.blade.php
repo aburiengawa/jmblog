@@ -71,7 +71,8 @@
                             <small>{{$comment->created_at->diffForHumans()}}</small>
                         </h4>
                         <input class="comment-id" type="hidden" name="id" value="{{$comment->id}}">
-                        <div class="comment-body">{{$comment->body}}</div>
+                        {{-- <div class="comment-body">{{$comment->body}}</div> --}}
+                        <div class="comment-body">{!! $comment->body !!}</div>
                         @auth
                         {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                             <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -101,7 +102,7 @@
                                         <small>{{$reply->created_at->diffForHumans()}}</small>
                                     </h4>
                                     <input class="reply-id" type="hidden" name="id" value="{{$reply->id}}">
-                                    <div class="comment-body">{{$reply->body}}</div>
+                                    <div class="comment-body">{!! $reply->body !!}</div>
                                     @auth
                                     {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
                                         <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -117,6 +118,7 @@
                                             <span class="reply-hide"><a href="#void"><small>HIDE</small></a></span>
                                             @if(Auth::user()->role_id === 1 || Auth::user()->id === $reply->user->id)
                                             <span class="delete-reply"><a href="#void"><small>DELETE</small></a></span>
+                                            {{-- <span class="edit-reply"><a href="#void"><small>EDIT</small></a></span> --}}
                                             @endif
                                         </div>
                                     {!! Form::close() !!}

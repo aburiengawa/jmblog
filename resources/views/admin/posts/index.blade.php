@@ -22,7 +22,7 @@
 		<tr>
 			<td>{{$post->user->name}}</td>
 			<td><a href="/posts/edit/{{ $post->id }}">{{$post->title}}</a></td>
-			<td>{!!str_limit($post->body, 20)!!}</td>
+			<td>{!!str_limit($post->body, 30)!!}</td>
 			<td><a href="/post/{{ $post->id }}">View Post</a></td>
 			@if($post->comments->count())
 			<td><a href="/post/comments/{{ $post->id }}">View Comments ({{$post->comments->count()}})</a></td>
