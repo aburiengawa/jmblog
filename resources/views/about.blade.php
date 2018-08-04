@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
             <p>August 2018</p>
-			<p>It took me a <em>very</em> long time to put this up here. Doing <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>, taking in a 6-day work week schedule, working on my <a href="https://udemy.com/essential-japanese-travel-phrases" target="_blank">Udemy Japanese course</a>, and this... if I'm not mistaken, I think I started working on this late last year.</p>
-            <p>What purpose does this blog serve?</p>
+			<p>It took me a <em>very</em> long time to put this up here. Doing <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>, taking in a 6-day work week schedule, working on my <a href="https://udemy.com/essential-japanese-travel-phrases" target="_blank">Udemy Japanese course</a>, and this... Just checked github, my first commit was 10 months ago!</p>
+            <p>So, what's this blog for?</p>
             <p>1. My first Laravel project that I can show people.</p>
             <p>2. An exercise of putting everything I've learned together</p>
             <p>3. An exercise in taking someone else's front end template, and customizing it to make it work for me. (And in this template's case, fixing it because some parts were broken.)</p>

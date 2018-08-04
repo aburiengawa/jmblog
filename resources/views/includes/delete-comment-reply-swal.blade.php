@@ -27,7 +27,7 @@ $('#ajax-comment-container').on('click', '.delete-comment', function(e){
 		                    // alert("Success. Id is: "+response);                             
 		                }
 		            });               
-		            alert('clicked');
+		            // alert('clicked');
 		            $('.comment-id-delete[value="'+comment_id+'"]').parent().remove();         
 		            $(this).parents().eq(3).remove();
 				}

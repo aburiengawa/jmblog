@@ -44,7 +44,7 @@ Route::delete('post-comment/delete', 'PostsController@destroyComment');
 Route::get('replies/index', 'AdminRepliesController@index');
 Route::get('/comment/replies/{id}', 'AdminRepliesController@showCommentReplies');
 Route::get('replies/edit/{reply}', 'AdminRepliesController@edit');
-Route::patch('replies/edit/{reply}', 'AdminRepliesController@update');
+Route::patch('replies/edit/{reply}', 'AdminRepliesController@update')->name('reply-update');
 Route::delete('replies/edit/{reply}', 'AdminRepliesController@destroy');
 //Reply store
 Route::post('replies/create', 'AdminRepliesController@store');

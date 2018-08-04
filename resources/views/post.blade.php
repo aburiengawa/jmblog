@@ -81,7 +81,7 @@
                             {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                             </div>  
                                 <div class="form-group reply-link">
-                                    <a href="#void"><small>REPLY</small></a>
+                                    <a href="#void"><small>REPLY | OPTIONS</small></a>
                                 </div>
                             <div class="form-group reply-elements hide-element">
                                 {!! Form::submit('Post Reply', ['class'=>'send-reply-to-comment btn btn-primary']) !!}
@@ -111,7 +111,7 @@
                                             {!! Form::textarea('body', null, ['class'=>'reply-textarea form-control', 'rows' => 2, 'required']) !!}
                                         </div>  
                                         <div class="form-group reply-link">
-                                            <a href="#void"><small>REPLY</small></a>
+                                            <a href="#void"><small>REPLY | OPTIONS</small></a>
                                         </div>
                                         <div class="form-group hide-element">
                                             {!! Form::submit('Post Reply', ['class'=>'send-reply-to-reply btn btn-primary']) !!}

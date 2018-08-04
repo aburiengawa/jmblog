@@ -65,7 +65,11 @@ class AdminCommentsController extends Controller
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);
-        auth()->user()->comments()->whereId($id)->first()->delete();
+        if (auth()->user()->role_id === 1) {
+            $comment->delete();
+        } else {
+            auth()->user()->comments()->whereId($id)->first()->delete();
+        }        
         return redirect('/comments/index')->withInfo('Your comment has been deleted');
     }       
 }

@@ -54,12 +54,25 @@ class AdminRepliesController extends Controller
         $reply = Reply::findOrFail($id);
         return view('admin.comments.replies.edit', compact('reply'));
     }
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        return "Update works";
+        $this->validate(request(), [
+            'body'  => 'required'
+        ]);
+        $reply = Reply::findOrFail($id);
+        $reply->body = $request->body;
+        $reply->update();
+
+        return redirect('/admin')->withInfo('Your reply has been updated');        
     }
     public function destroy($id)
     {
-        return "You destroyed me! Not!";
+        $reply = Reply::findOrFail($id);
+        if (auth()->user()->role_id === 1) {
+            $reply->delete();
+        } else {
+            auth()->user()->comments()->whereId($id)->first()->delete();
+        }        
+        return redirect('/replies/index')->withInfo('Your reply has been deleted');
     }
 }
