@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Clean Blog - Start Bootstrap Theme</title>
+        <title>Sushi Dev - Blog</title>
         <!-- Bootstrap core CSS -->
         {{-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">

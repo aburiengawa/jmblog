@@ -71,7 +71,6 @@
                             <small>{{$comment->created_at->diffForHumans()}}</small>
                         </h4>
                         <input class="comment-id" type="hidden" name="id" value="{{$comment->id}}">
-                        {{-- <div class="comment-body">{{$comment->body}}</div> --}}
                         <div class="comment-body">{!! $comment->body !!}</div>
                         @auth
                         {!! Form::open(['method'=>'POST', 'class'=>'reply-form', 'action'=>'AdminRepliesController@store']) !!}
