@@ -32,7 +32,7 @@
             <p>The blog is still pretty bare right now, but in the coming months(ish) I plan to add other features such as social media and newsletters. Yeah, I know, no one is going to be reading this anyway, but I want to add all those things as a way for me to grow as a web developer.</p>
             <p>If you're interested, the code for this site is <a href="https://github.com/agedengaku/jmblog" target="_blank">here</a>.</p>
             <p>Thanks for dropping by! I hope you find something here that you like.</p>
-            <p><strong>PS.</strong> I love sushi. That's why I called this blog "Sushi Dev". My favorite sushi is <em><a href="https://uds.gnst.jp/rest/img/et6ynbn50000/s_00a2.jpg?t=1495877329">aburi engawa (炙りえんがわ)</a></em>. Many sushi restaurants don't have this on the menu, but if you ask for it, they'll make it for you. You really have to try it!</p>
+            <p><strong>PS.</strong> I love sushi (who doesn't?). That's why I called this blog "Sushi Dev". My favorite sushi is <em><a href="https://uds.gnst.jp/rest/img/et6ynbn50000/s_00a2.jpg?t=1495877329">aburi engawa (炙りえんがわ)</a></em>. Many sushi restaurants don't have this on the menu, but if you ask for it, they'll make it for you. You really have to try it!</p>
             <hr>
             {{-- end of comments --}}
             </div> {{-- .col-lg-8 col-md-10 mx-auto --}}
